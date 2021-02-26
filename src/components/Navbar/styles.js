@@ -1,5 +1,5 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
-export default makeStyles((theme) => ({
+export default makeStyles(theme => ({
   grow: {
     flexGrow: 1,
   },
@@ -49,7 +49,7 @@ export default makeStyles((theme) => ({
   },
   inputRoot: {
     color: 'inherit',
-    borderBottom: '1px solid #afafb4'
+    borderBottom: '1px solid #afafb4',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
