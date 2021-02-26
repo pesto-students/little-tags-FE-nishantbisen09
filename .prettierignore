@@ -1,0 +1,4 @@
+serviceWorker.js
+*.md
+
+node_modules/
