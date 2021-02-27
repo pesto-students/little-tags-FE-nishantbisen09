@@ -1,0 +1,25 @@
+.product-card {
+  transition: transform 0.25s ease, -webkit-transform 0.25s ease !important;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translate3d(0, -5px, 0);
+  box-shadow: 0 1.5rem 2.5rem rgba(22, 28, 45, 0.1), 0 0.3rem 0.5rem -0.5rem rgba(22, 28, 45, 0.05) !important;
+}
+
+.product-name {
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #4758b8;
+}
+
+.fav-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
