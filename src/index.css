@@ -1,13 +1,39 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  color: #2d3748;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+.category-card-container {
+  height: 200px;
+  width: 150px;
+  background-color: #f7f9fa;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-image {
+  margin-top: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 62px;
+  width: 62px;
+  margin-bottom: 30px;
+}
+
+.top-categories-header {
+  font-size: 32px;
+  text-align: center;
+}
+
+.top-categories {
+  margin-top: 30px;
 }
