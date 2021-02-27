@@ -1,18 +1,12 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import CategoryCard from './CategoryCard';
+import './categories.css';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
     marginTop: 15,
-  },
-  paper: {
-    height: 140,
-    width: 100,
-  },
-  control: {
-    padding: theme.spacing(2),
   },
 }));
 
@@ -21,18 +15,14 @@ const Categories = ({ categories }) => {
   return (
     <div className="top-categories">
       <h3 className="top-categories-header">Top Categories</h3>
-      <Grid container className={classes.root} spacing={2}>
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={10}>
-            {categories.map(category => {
-              return (
-                <Grid key={category.name} item>
-                  <CategoryCard category={category} />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Grid>
+      <Grid container className={classes.root} justify="center" spacing={7}>
+        {categories.map(category => {
+          return (
+            <Grid key={category.name} item>
+              <CategoryCard category={category} />
+            </Grid>
+          );
+        })}
       </Grid>
     </div>
   );
