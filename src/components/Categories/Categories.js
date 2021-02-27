@@ -18,7 +18,7 @@ const Categories = ({ categories }) => {
       <Grid container className={classes.root} justify="center" spacing={7}>
         {categories.map(category => {
           return (
-            <Grid key={category.name} item>
+            <Grid key={category.name} item lg>
               <CategoryCard category={category} />
             </Grid>
           );

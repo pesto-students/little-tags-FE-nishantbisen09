@@ -1,5 +1,6 @@
 .featured-ad-container {
   background-color: #f9b934;
+  padding: 10px;
 }
 .featured-ad {
   max-width: 1000px;
@@ -12,18 +13,20 @@
   width: 250px;
 }
 
+.ad-heading,
+.ad-subheading {
+  margin-top: 5px;
+}
+
 .ad-description {
   height: 250px;
-  padding: 15px;
+}
+
+.buy-now-btn {
+  margin-top: 40px;
 }
 
 .ad-image {
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-@media (max-width: 650px) {
-  .ad-image-container {
-    display: none;
-  }
 }
