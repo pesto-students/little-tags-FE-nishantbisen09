@@ -1,6 +1,8 @@
+import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
-import { CategoryCard } from './CategoryCard';
-const useStyles = makeStyles((theme) => ({
+import CategoryCard from './CategoryCard';
+
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     marginTop: 15,
@@ -14,15 +16,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Categories = ({ categories }) => {
+const Categories = ({ categories }) => {
   const classes = useStyles();
   return (
-    <div className='top-categories'>
-      <h3 className='top-categories-header'>Top Categories</h3>
+    <div className="top-categories">
+      <h3 className="top-categories-header">Top Categories</h3>
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
-          <Grid container justify='center' spacing={10}>
-            {categories.map((category) => {
+          <Grid container justify="center" spacing={10}>
+            {categories.map(category => {
               return (
                 <Grid key={category.name} item>
                   <CategoryCard category={category} />
@@ -35,3 +37,5 @@ export const Categories = ({ categories }) => {
     </div>
   );
 };
+
+export default Categories;

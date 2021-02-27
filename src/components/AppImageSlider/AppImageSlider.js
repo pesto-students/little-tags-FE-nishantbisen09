@@ -4,24 +4,15 @@ import sliderImage1 from '../../assets/slider-img-1.jpg';
 import sliderImage2 from '../../assets/slider-img-2.jpg';
 import './appImageSlider.css';
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: true
-};
-
 const sliderImageDesktopStyles = {
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   height: '70vh',
 };
 
-export const AppImageSlider = () => {
+const AppImageSlider = () => {
   return (
-    <Slider {...settings} >
+    <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1} arrows>
       <div>
         <div
           style={{
@@ -29,8 +20,8 @@ export const AppImageSlider = () => {
             ...sliderImageDesktopStyles,
           }}
         >
-          <div className='advertisement-text-container'>
-            <span className='advertisement-text'>
+          <div className="advertisement-text-container">
+            <span className="advertisement-text">
               Exclusive Summer <br />
               Collection
             </span>
@@ -48,3 +39,5 @@ export const AppImageSlider = () => {
     </Slider>
   );
 };
+
+export default AppImageSlider;

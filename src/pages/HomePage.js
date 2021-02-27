@@ -1,5 +1,6 @@
 import React from 'react';
-import { AppImageSlider, Categories } from '../components';
+import AppImageSlider from '../components/AppImageSlider/AppImageSlider';
+import Categories from '../components/Categories/Categories';
 
 import mens from '../assets/images/categories/mens.png';
 import womens from '../assets/images/categories/womens.png';
@@ -11,27 +12,27 @@ const topCategories = [
   {
     id: 1,
     name: "Men's Clothing",
-    image_url: mens,
+    imageUrl: mens,
   },
   {
     id: 2,
     name: "Women's Clothing",
-    image_url: womens,
+    imageUrl: womens,
   },
   {
     id: 3,
     name: 'Jewellery',
-    image_url: jewellery,
+    imageUrl: jewellery,
   },
   {
     id: 4,
     name: 'Electronics',
-    image_url: electronics,
+    imageUrl: electronics,
   },
   {
     id: 5,
     name: 'Accessories',
-    image_url: accessories,
+    imageUrl: accessories,
   },
 ];
 function HomePage() {
