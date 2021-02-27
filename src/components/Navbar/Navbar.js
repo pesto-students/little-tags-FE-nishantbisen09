@@ -15,6 +15,7 @@ import { Favorite, ShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 
 import AppLogo from '../../assets/little-tags-logo.png';
+import AuthModal from '../Auth/AuthModal';
 
 export default function Navbar() {
   const classes = useStyles();
@@ -146,6 +147,7 @@ export default function Navbar() {
               color="inherit"
             >
               <AccountCircle />
+              <AuthModal />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
