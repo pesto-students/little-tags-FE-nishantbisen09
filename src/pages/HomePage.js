@@ -7,6 +7,11 @@ import womens from '../assets/images/categories/womens.png';
 import jewellery from '../assets/images/categories/jewellery.png';
 import electronics from '../assets/images/categories/electronics.png';
 import accessories from '../assets/images/categories/accessories.png';
+import FeaturedAdd from '../components/FeaturedAdd/FeaturedAdd';
+import Products from '../components/Products/Products';
+import hoodie from '../assets/images/products/hoodie.png';
+import headphone from '../assets/images/products/headphone.png';
+import longCoat from '../assets/images/products/long-coat.png';
 
 const topCategories = [
   {
@@ -35,11 +40,35 @@ const topCategories = [
     imageUrl: accessories,
   },
 ];
+
+const products = [
+  {
+    name: 'Classic Hoodie',
+    price: '599',
+    rating: 5,
+    image: hoodie,
+  },
+  {
+    name: 'Headphones',
+    price: '599',
+    rating: 5,
+    image: headphone,
+  },
+  {
+    name: 'Long Coat',
+    price: '599',
+    rating: 4,
+    image: longCoat,
+  },
+];
+
 function HomePage() {
   return (
     <>
       <AppImageSlider />
       <Categories categories={topCategories} />
+      <FeaturedAdd />
+      <Products products={products} />
     </>
   );
 }

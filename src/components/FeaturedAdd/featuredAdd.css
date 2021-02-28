@@ -1,0 +1,32 @@
+.featured-ad-container {
+  background-color: #f9b934;
+  padding: 10px;
+}
+.featured-ad {
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.ad-image-container,
+.ad-image {
+  height: 250px;
+  width: 250px;
+}
+
+.ad-heading,
+.ad-subheading {
+  margin-top: 5px;
+}
+
+.ad-description {
+  height: 250px;
+}
+
+.buy-now-btn {
+  margin-top: 40px;
+}
+
+.ad-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
