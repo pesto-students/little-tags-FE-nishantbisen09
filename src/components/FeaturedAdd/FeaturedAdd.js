@@ -5,11 +5,11 @@ import './featuredAdd.css';
 
 const FeaturedAdd = () => {
   return (
-    <div className="featured-ad-container">
-      <div className="featured-ad">
+    <div className="home-featured-ad-container">
+      <div className="home-featured-ad">
         <Grid container justify="space-between">
-          <div className="ad-description">
-            <h1 className="ad-heading">
+          <div className="home-ad-description">
+            <h1 className="home-ad-heading">
               Experience your music like <br /> never before
             </h1>
             <p className="ad-subheading">
@@ -22,7 +22,7 @@ const FeaturedAdd = () => {
           </div>
           <Hidden xsDown smDown>
             <div className="ad-image-container">
-              <img className="ad-image" src={headphoneCover} alt="featured-ad" />
+              <img className="ad-image" src={headphoneCover} alt="home-featured-ad" />
             </div>
           </Hidden>
         </Grid>
