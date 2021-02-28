@@ -9,7 +9,9 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 import LoginModal from '../Auth/LoginModal';
+import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 
 const useStyles = makeStyles(theme => ({
   sectionDesktop: {
@@ -20,10 +22,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const isLoggedIn = false;
-
 function DesktopMenu() {
   const classes = useStyles();
+  const { isInitialized, isSignedIn, signOut, googleUser } = useGoogleAuth();
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -48,6 +49,11 @@ function DesktopMenu() {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    signOut();
+    handleMenuClose();
+  };
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -61,6 +67,8 @@ function DesktopMenu() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Divider />
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -86,18 +94,17 @@ function DesktopMenu() {
 
   return (
     <div className={classes.sectionDesktop}>
-      {isLoggedIn ? (
+      {!isInitialized || !isSignedIn ? <LoginModal loading={isInitialized} /> : null}
+      {isInitialized && isSignedIn ? (
         <>
           <Button endIcon={<ExpandMoreIcon />} onClick={handleProfileMenuOpen}>
-            Tejas
+            {googleUser.profileObj.name}
           </Button>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
+          <IconButton aria-label="Wish list" color="inherit">
             <Favorite />
           </IconButton>
         </>
-      ) : (
-        <LoginModal />
-      )}
+      ) : null}
 
       <IconButton
         aria-label="show languages"
