@@ -1,5 +1,6 @@
 import { Button, Grid, Hidden } from '@material-ui/core';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import headphoneCover from '../../assets/headphone-cover.png';
 import './featuredAdd.css';
 
@@ -10,7 +11,7 @@ const FeaturedAdd = () => {
         <Grid container justify="space-between">
           <div className="ad-description">
             <h1 className="ad-heading">
-              Experience your music like <br /> never before
+              <FormattedMessage id="featuredAdMessage" values={{ lineBreak: <br /> }} />
             </h1>
             <p className="ad-subheading">
               If we&apos;re no longer the right solution for you, <br />
