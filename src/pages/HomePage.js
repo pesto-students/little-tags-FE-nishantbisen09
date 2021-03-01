@@ -7,7 +7,7 @@ import womens from '../assets/images/categories/womens.png';
 import jewellery from '../assets/images/categories/jewellery.png';
 import electronics from '../assets/images/categories/electronics.png';
 import accessories from '../assets/images/categories/accessories.png';
-import FeaturedAdd from '../components/FeaturedAdd/FeaturedAdd';
+import FeaturedAdd from '../components/FeaturedAd/FeaturedAd';
 import Products from '../components/Products/Products';
 import hoodie from '../assets/images/products/hoodie.png';
 import headphone from '../assets/images/products/headphone.png';
