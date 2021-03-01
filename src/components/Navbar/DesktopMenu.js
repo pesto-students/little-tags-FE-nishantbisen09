@@ -59,7 +59,6 @@ function DesktopMenu() {
   };
 
   const selectLanguage = local => {
-    console.log(local, 'e');
     setLanguage(local);
     handleLanguageMenuClose();
   };
