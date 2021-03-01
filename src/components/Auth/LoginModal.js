@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Grid from '@material-ui/core/Grid';
+import { FormattedMessage } from 'react-intl';
 import GoogleLoginButton from './GoogleLoginButton';
 
 const useStyles = makeStyles(() => ({
@@ -13,6 +14,11 @@ const useStyles = makeStyles(() => ({
   },
   dialogPaper: {
     minHeight: '200px',
+  },
+
+  verticalMargin: {
+    marginTop: '10px',
+    marginBottom: '10px',
   },
 }));
 
@@ -32,7 +38,7 @@ function LoginModal({ loading }) {
   return (
     <>
       <Button disabled={!loading} variant="contained" color="primary" onClick={handleClickOpen}>
-        Login
+        <FormattedMessage id="loginButtonText" />
       </Button>
 
       <Dialog
@@ -52,8 +58,15 @@ function LoginModal({ loading }) {
             alignItems="center"
           >
             <Grid item xs={12} sm={4} align="left">
-              <h2>Login</h2>
-              <p>Login to get access to your Orders, Wishlists and your personalized settings</p>
+              <h2 className={classes.verticalMargin}>
+                <FormattedMessage id="loginTitle" />
+              </h2>
+
+              <hr />
+
+              <p className={classes.verticalMargin}>
+                <FormattedMessage id="loginDescription" />
+              </p>
             </Grid>
             <Grid item xs={12} sm={8}>
               <GoogleLoginButton />

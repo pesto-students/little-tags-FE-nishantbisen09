@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
+import { FormattedMessage } from 'react-intl';
 import CategoryCard from './CategoryCard';
 import './categories.css';
 
@@ -14,7 +15,9 @@ const Categories = ({ categories }) => {
   const classes = useStyles();
   return (
     <div className="top-categories">
-      <h3 className="top-categories-header">Top Categories</h3>
+      <h3 className="top-categories-header">
+        <FormattedMessage id="topCategories" />
+      </h3>
       <Grid container className={classes.root} justify="center" spacing={7}>
         {categories.map(category => {
           return (

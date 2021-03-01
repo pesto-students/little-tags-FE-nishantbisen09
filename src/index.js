@@ -6,10 +6,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { GoogleAuthProvider } from './components/Auth/GoogleAuthProvider';
 
+import { LanguageProvider } from './i18n';
+
 ReactDOM.render(
   <React.StrictMode>
     <GoogleAuthProvider>
-      <App />
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </GoogleAuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

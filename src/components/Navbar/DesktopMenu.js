@@ -12,6 +12,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import LoginModal from '../Auth/LoginModal';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
+import { useLanguage } from '../../i18n/LanguageProvider';
+import { localList } from '../../i18n/locales';
 
 const useStyles = makeStyles(theme => ({
   sectionDesktop: {
@@ -24,6 +26,8 @@ const useStyles = makeStyles(theme => ({
 
 function DesktopMenu() {
   const classes = useStyles();
+
+  const { setLocale: setLanguage } = useLanguage();
   const { isInitialized, isSignedIn, signOut, googleUser } = useGoogleAuth();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,6 +56,12 @@ function DesktopMenu() {
   const handleLogout = () => {
     signOut();
     handleMenuClose();
+  };
+
+  const selectLanguage = local => {
+    console.log(local, 'e');
+    setLanguage(local);
+    handleLanguageMenuClose();
   };
 
   const menuId = 'primary-search-account-menu';
@@ -83,12 +93,13 @@ function DesktopMenu() {
       open={isLanguageMenuOpen}
       onClose={handleLanguageMenuClose}
     >
-      <MenuItem>
-        <p>English</p>
-      </MenuItem>
-      <MenuItem>
-        <p>ಕನ್ನಡ</p>
-      </MenuItem>
+      {localList.map(item => {
+        return (
+          <MenuItem key={Math.random()} onClick={() => selectLanguage(item[0])}>
+            {item[1]}
+          </MenuItem>
+        );
+      })}
     </Menu>
   );
 

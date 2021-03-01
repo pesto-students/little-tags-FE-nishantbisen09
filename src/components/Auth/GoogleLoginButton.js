@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import { FormattedMessage } from 'react-intl';
 import { useGoogleAuth } from './GoogleAuthProvider';
 
 function GoogleLoginButton() {
@@ -18,7 +19,7 @@ function GoogleLoginButton() {
       onClick={signIn}
       className="hollow button primary"
     >
-      Sign in with Google
+      <FormattedMessage id="signInWithGoogle" />
     </Button>
   );
 }

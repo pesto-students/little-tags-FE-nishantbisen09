@@ -1,18 +1,19 @@
 import { Button, Grid, Hidden } from '@material-ui/core';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import headphoneCover from '../../assets/headphone-cover.png';
-import './featuredAdd.css';
+import './featuredAd.css';
 
-const FeaturedAdd = () => {
+function FeaturedAd() {
   return (
     <div className="home-featured-ad-container">
       <div className="home-featured-ad">
         <Grid container justify="space-between">
           <div className="home-ad-description">
             <h1 className="home-ad-heading">
-              Experience your music like <br /> never before
+              <FormattedMessage id="featuredAdTitle" values={{ lineBreak: <br /> }} />
             </h1>
-            <p className="ad-subheading">
+            <p className="home-ad-subheading">
               If we&apos;re no longer the right solution for you, <br />
               we&apos;ll allow you to export your data at anytime for any reason.
             </p>
@@ -29,6 +30,6 @@ const FeaturedAdd = () => {
       </div>
     </div>
   );
-};
+}
 
-export default FeaturedAdd;
+export default FeaturedAd;
