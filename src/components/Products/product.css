@@ -23,3 +23,9 @@
   right: 12px;
   top: 12px;
 }
+
+.featured-products-header {
+  margin-top: 35px;
+  font-size: 32px;
+  text-align: center;
+}
