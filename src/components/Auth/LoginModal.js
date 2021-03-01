@@ -7,6 +7,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Grid from '@material-ui/core/Grid';
 import { FormattedMessage } from 'react-intl';
 import GoogleLoginButton from './GoogleLoginButton';
+import LoginImage from '../../assets/login_image.png';
 
 const useStyles = makeStyles(() => ({
   lightBlueBG: {
@@ -57,8 +58,8 @@ function LoginModal({ loading }) {
             justify="center"
             alignItems="center"
           >
-            <Grid item xs={12} sm={4} align="left">
-              <h2 className={classes.verticalMargin}>
+            <Grid item xs={12} sm={12} align="center">
+              {/* <h2 className={classes.verticalMargin}>
                 <FormattedMessage id="loginTitle" />
               </h2>
 
@@ -66,19 +67,15 @@ function LoginModal({ loading }) {
 
               <p className={classes.verticalMargin}>
                 <FormattedMessage id="loginDescription" />
-              </p>
+              </p> */}
+              <img src={LoginImage} alt="login" width="100px" />
             </Grid>
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={12} sm={12}>
               <GoogleLoginButton />
               {/* Login with Facebook */}
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions className={classes.lightBlueBG}>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-        </DialogActions>
       </Dialog>
     </>
   );
