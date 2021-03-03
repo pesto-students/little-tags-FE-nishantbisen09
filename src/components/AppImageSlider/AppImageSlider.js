@@ -1,13 +1,14 @@
 import React from 'react';
 import Slider from 'react-slick';
-import sliderImage1 from '../../assets/slider-img-1.jpg';
-import sliderImage2 from '../../assets/slider-img-2.jpg';
+import sliderImage1 from '../../assets/slider-img-1.png';
+import sliderImage2 from '../../assets/slider-img-2.png';
 import './appImageSlider.css';
 
 const sliderImageDesktopStyles = {
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
-  height: '70vh',
+  height: '500px',
+  cursor: 'pointer',
 };
 
 const AppImageSlider = () => {
@@ -19,14 +20,7 @@ const AppImageSlider = () => {
             backgroundImage: `url(${sliderImage1})`,
             ...sliderImageDesktopStyles,
           }}
-        >
-          <div className="advertisement-text-container">
-            <span className="advertisement-text">
-              Exclusive Summer <br />
-              Collection
-            </span>
-          </div>
-        </div>
+        />
       </div>
       <div>
         <div
