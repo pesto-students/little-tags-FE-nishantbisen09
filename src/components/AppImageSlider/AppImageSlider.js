@@ -7,7 +7,7 @@ import './appImageSlider.css';
 const sliderImageDesktopStyles = {
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
-  height: '500px',
+  height: '50vh',
   cursor: 'pointer',
 };
 

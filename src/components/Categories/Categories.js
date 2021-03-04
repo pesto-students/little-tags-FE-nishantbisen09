@@ -18,7 +18,7 @@ const Categories = ({ categories }) => {
       <h3 className="top-categories-header">
         <FormattedMessage id="topCategories" />
       </h3>
-      <Grid container className={classes.root} justify="center" spacing={7}>
+      <Grid container className={classes.root} justify="center" spacing={6}>
         {categories.map(category => {
           return (
             <Grid key={category.name} item lg>

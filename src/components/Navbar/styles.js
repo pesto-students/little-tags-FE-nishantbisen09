@@ -10,7 +10,6 @@ export default makeStyles(theme => ({
   },
   logo: {
     height: '50px',
-    width: '140px',
     display: 'flex',
     alignItems: 'center',
     padding: 5,
