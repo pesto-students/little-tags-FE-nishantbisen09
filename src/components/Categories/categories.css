@@ -10,6 +10,7 @@
   text-align: center;
   transition: box-shadow 0.25s ease, transform 0.25s ease, -webkit-transform 0.25s ease;
   cursor: pointer;
+  padding: 5px;
 }
 
 .category-card-container:hover {

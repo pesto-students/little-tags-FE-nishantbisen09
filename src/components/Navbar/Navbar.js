@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
 
-import AppLogo from '../../assets/little-tags-logo.png';
+import AppLogo from '../../assets/app-logo.png';
 import Search from '../Search/Search';
 import Sidebar from '../Sidebar/Sidebar';
 import MobileMenu from './MobileMenu';
