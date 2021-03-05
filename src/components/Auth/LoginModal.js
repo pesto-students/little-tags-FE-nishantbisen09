@@ -10,7 +10,7 @@ import GoogleLoginButton from './GoogleLoginButton';
 import './login.css';
 import loginHeader from '../../assets/app-logo.png';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   dialogPaper: {
     minHeight: '200px',
     backgroundColor: 'rgb(72,89,107,0.1)',
@@ -21,6 +21,17 @@ const useStyles = makeStyles(() => ({
   verticalMargin: {
     marginTop: '10px',
     marginBottom: '10px',
+  },
+  login: {
+    height: '30px',
+    alignSelf: 'center',
+    backgroundColor: '#00ADB5',
+    '&:hover': {
+      backgroundColor: '#00ADB5',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
 }));
 
@@ -39,7 +50,13 @@ function LoginModal({ loading }) {
 
   return (
     <>
-      <Button disabled={!loading} variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button
+        disabled={!loading}
+        variant="contained"
+        color="primary"
+        onClick={handleClickOpen}
+        className={classes.login}
+      >
         <FormattedMessage id="loginButtonText" />
       </Button>
 
