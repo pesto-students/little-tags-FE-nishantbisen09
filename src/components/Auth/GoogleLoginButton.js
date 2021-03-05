@@ -2,28 +2,25 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { FormattedMessage } from 'react-intl';
 import { useGoogleAuth } from './GoogleAuthProvider';
-import googleLogo from '../../assets/google-plus.png';
-import './login.css';
 
 function GoogleLoginButton() {
   const { signIn } = useGoogleAuth();
   return (
-    <>
-      <Button
-        variant="contained"
-        startIcon={
-          <img
-            style={{ marginBottom: '3px', marginRight: '5px', width: '34px' }}
-            alt="Google login"
-            src={googleLogo}
-          />
-        }
-        onClick={signIn}
-        className="google-btn hollow button primary"
-      >
-        <FormattedMessage id="signInWithGoogle" />
-      </Button>
-    </>
+    <Button
+      variant="outlined"
+      startIcon={
+        <img
+          width="15px"
+          style={{ marginBottom: '3px', marginRight: '5px' }}
+          alt="Google login"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+        />
+      }
+      onClick={signIn}
+      className="google-btn hollow button primary"
+    >
+      <FormattedMessage id="signInWithGoogle" />
+    </Button>
   );
 }
 
