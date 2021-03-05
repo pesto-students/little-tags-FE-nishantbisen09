@@ -26,11 +26,6 @@
     "lint": "eslint src/**/*.js",
     "format": "prettier --write src/**/*.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run format"
-    }
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -50,6 +45,9 @@
     ]
   },
   "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
