@@ -1,7 +1,3 @@
-.login-container {
-  height: 20vh;
-  width: 20vw;
-}
 .login-header-container {
   display: flex;
   justify-content: center;
@@ -22,7 +18,6 @@
 }
 
 .google-btn {
-  background-color: #dd4b39 !important;
-  color: white !important;
   display: flex;
+  padding: 5px;
 }
