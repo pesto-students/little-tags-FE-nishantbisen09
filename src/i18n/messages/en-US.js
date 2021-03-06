@@ -1,7 +1,7 @@
 import LOCALES from '../locales';
 
 export default {
-  [LOCALES.ENGLISH[0]]: {
+  [LOCALES.ENGLISH.languageKey]: {
     search: 'Search',
     topCategories: 'Top Categories',
     loginButtonText: 'Login',

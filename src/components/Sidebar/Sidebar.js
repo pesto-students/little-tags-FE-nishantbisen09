@@ -38,8 +38,6 @@ function Sidebar() {
     onDotMenuCLose();
   };
 
-  const onLoginClick = () => {};
-
   const menu = () => (
     <div className={classes.list}>
       <div className={classes.sidebarLogoContainer}>

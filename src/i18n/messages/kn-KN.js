@@ -1,7 +1,7 @@
 import LOCALES from '../locales';
 
 export default {
-  [LOCALES.KANNADA[0]]: {
+  [LOCALES.KANNADA.languageKey]: {
     search: 'ಹುಡುಕಿ',
     topCategories: 'ಮುಖ್ಯ ವಿಭಾಗಗಳು',
     loginButtonText: 'ನಮೂದಿಸಿ',

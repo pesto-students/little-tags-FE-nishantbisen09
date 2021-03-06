@@ -1,6 +1,12 @@
 const LOCALES = {
-  ENGLISH: ['en-us', 'English'],
-  KANNADA: ['kn', 'ಕನ್ನಡ'],
+  ENGLISH: {
+    languageKey: 'en-us',
+    languageName: 'English',
+  },
+  KANNADA: {
+    languageKey: 'kn',
+    languageName: 'ಕನ್ನಡ',
+  },
 };
 
 export const localList = Object.values(LOCALES);
