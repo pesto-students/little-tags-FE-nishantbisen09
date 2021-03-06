@@ -5,8 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FormattedNumber } from 'react-intl';
 import QuantityContainer from '../components/QuantityContainer/QuantityContainer';
 import SizeContainer from '../components/SizeContainer/SizeContainer';
-import getCurrencyByQuery from '../services/currencyRates';
-import getProductDetail from '../services/productDetail';
+import products from '../data/products';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -59,17 +58,13 @@ const useStyles = makeStyles(() => ({
 const ProductDetail = props => {
   const classes = useStyles();
   const [productDetails, setProductDetails] = useState({});
-  const [currentUSDtoINRPrice, setCurrentUSDtoINRPrice] = useState(1);
-  const { image, description, title, rating } = productDetails;
+  const { image, description, title, rating, sizes, price } = productDetails;
   const [currentSize, setCurrentSize] = useState();
 
-  const fetchProductDetails = async () => {
-    const details = await getProductDetail(props.match.params.id);
-    const currentRate = await getCurrencyByQuery();
-    const { size, price } = details;
-    setCurrentUSDtoINRPrice(currentRate.USD_INR * price);
+  const fetchProductDetails = () => {
+    console.log(props.match.params.id);
+    const details = products.find(({ id }) => id === parseInt(props.match.params.id, 10));
     setProductDetails(details);
-    setCurrentSize(size);
   };
 
   useEffect(() => {
@@ -84,9 +79,7 @@ const ProductDetail = props => {
       <Grid item>
         <h1 className={classes.title}>{title}</h1>
         <h3 className={classes.price}>
-          {currentUSDtoINRPrice && (
-            <FormattedNumber value={currentUSDtoINRPrice} style="currency" currency="INR" />
-          )}
+          {price && <FormattedNumber value={price} style="currency" currency="INR" />}
         </h3>
         <div className={classes.description}>
           <p>{description}</p>
@@ -97,7 +90,11 @@ const ProductDetail = props => {
         </div>
         <div className={classes.size}>
           <b>Size </b>
-          <SizeContainer value={currentSize} onClick={sizeValue => setCurrentSize(sizeValue)} />
+          <SizeContainer
+            value={currentSize}
+            sizes={sizes}
+            onClick={sizeValue => setCurrentSize(sizeValue)}
+          />
         </div>
         <div className={classes.quantity}>
           <b>Quantity </b>
@@ -111,7 +108,7 @@ const ProductDetail = props => {
           </Grid>
           <Grid item>
             {' '}
-            <Button variant="contained" color="secondary">
+            <Button variant="outlined" color="secondary">
               <ShoppingBasket className={classes.addToCart} /> <span>ADD TO CART</span>
             </Button>
           </Grid>

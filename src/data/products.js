@@ -1,30 +1,39 @@
 import hoodie from '../assets/images/products/hoodie.png';
 import headphone from '../assets/images/products/headphone.png';
 import longCoat from '../assets/images/products/long-coat.png';
+import getRandomArbitraryNumber from '../utility';
+import { SIZES } from '../utility/appConstants';
 
 const products = [
   {
     id: 1,
-    name: 'Classic Hoodie',
-    price: '599',
-    rating: 5,
+    title: 'Classic Hoodie',
+    price: 4097,
     image: hoodie,
     description:
-      '-UNISEX Funky PRINTED COTTON ,FULL SLEEVE Sweatshirt Hoodie & Kangaroo POCKETS and CAP with print"MARVEL". Same as shown in picture. -Material: 100% COTTON SWEATSHIRT -Best suitable for winter season, cool places, inner fleece material keep you WARM -High Quality PRINT which lays down soft, durable, full color spectrum prints that last forever -PLEASE REFER SIZECHART WHICH ATTACHED WITH MODEL PHOTOSHOOT.',
+      'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+    rating: getRandomArbitraryNumber(1, 5),
+    sizes: SIZES,
   },
   {
     id: 2,
-    name: 'Headphones',
-    price: '599',
-    rating: 5,
+    title: 'Headphones',
+    price: 599,
+    rating: getRandomArbitraryNumber(1, 5),
+    sizes: SIZES,
     image: headphone,
+    description:
+      'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
   },
   {
     id: 3,
-    name: 'Long Coat',
-    price: '599',
-    rating: 4,
+    title: 'Long Coat',
+    price: 599,
+    rating: getRandomArbitraryNumber(1, 5),
+    sizes: SIZES,
     image: longCoat,
+    description:
+      'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
   },
 ];
 

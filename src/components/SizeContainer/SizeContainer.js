@@ -1,6 +1,5 @@
 import { Button, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { SIZES } from '../../utility';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -28,11 +27,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const SizeContainer = ({ value, onClick }) => {
+const SizeContainer = ({ value, sizes, onClick }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {SIZES.map(size => {
+      {sizes.map(size => {
         return (
           <Button
             key={size}
