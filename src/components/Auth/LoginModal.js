@@ -25,10 +25,6 @@ const useStyles = makeStyles(theme => ({
   login: {
     height: '30px',
     alignSelf: 'center',
-    backgroundColor: '#00ADB5',
-    '&:hover': {
-      backgroundColor: '#00ADB5',
-    },
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },
