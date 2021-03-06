@@ -22,7 +22,7 @@ function Sidebar() {
   const classes = useStyles();
   const [isSideBarOpen, toggleSideBar] = useState(false);
   const { isInitialized, isSignedIn, googleUser, signOut } = useGoogleAuth();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const ITEM_HEIGHT = 48;
 
