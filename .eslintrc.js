@@ -12,7 +12,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'react/prop-types': [0],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'import/prefer-default-export': 'off',
   },
   parserOptions: {
     parser: 'babel-eslint',
