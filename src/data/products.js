@@ -2,7 +2,7 @@ import hoodie from '../assets/images/products/hoodie.png';
 import headphone from '../assets/images/products/headphone.png';
 import longCoat from '../assets/images/products/long-coat.png';
 
-export const products = [
+const products = [
   {
     id: 1,
     name: 'Classic Hoodie',
@@ -27,3 +27,5 @@ export const products = [
     image: longCoat,
   },
 ];
+
+export default products;

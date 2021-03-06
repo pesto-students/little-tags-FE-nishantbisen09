@@ -4,7 +4,7 @@ import jewellery from '../assets/images/categories/jewellery.png';
 import electronics from '../assets/images/categories/electronics.png';
 import accessories from '../assets/images/categories/accessories.png';
 
-export const topCategories = [
+const topCategories = [
   {
     id: 1,
     name: "Men's Clothing",
@@ -31,3 +31,4 @@ export const topCategories = [
     imageUrl: accessories,
   },
 ];
+export default topCategories;
