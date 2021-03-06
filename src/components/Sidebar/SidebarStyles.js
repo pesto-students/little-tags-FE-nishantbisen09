@@ -30,7 +30,10 @@ export default makeStyles(theme => ({
   },
   accountCircle: {
     marginRight: '5px',
-    fontSize: '30px',
+    fontSize: '26px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '15px',
+    },
   },
   menuHeader: {
     padding: '8px',
@@ -48,5 +51,14 @@ export default makeStyles(theme => ({
       backgroundColor: '#00adb521',
       color: '#00ADB5',
     },
+  },
+  sidebarUser: {
+    fontSize: '18px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px',
+    },
+  },
+  login: {
+    padding: '10px',
   },
 }));

@@ -9,7 +9,6 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Divider from '@material-ui/core/Divider';
 import LoginModal from '../Auth/LoginModal';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import { useLanguage } from '../../i18n/LanguageProvider';
@@ -74,9 +73,6 @@ function DesktopMenu() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <Divider />
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
