@@ -9,7 +9,11 @@ function LanguageProvider({ children }) {
   const [locale, setLocale] = useState(LOCALES.ENGLISH);
   return (
     <LanguageContext.Provider value={{ locale, setLocale }}>
-      <IntlProvider locale={locale[0]} textComponent={Fragment} messages={messages[locale[0]]}>
+      <IntlProvider
+        locale={locale.languageKey}
+        textComponent={Fragment}
+        messages={messages[locale.languageKey]}
+      >
         {children}
       </IntlProvider>
     </LanguageContext.Provider>

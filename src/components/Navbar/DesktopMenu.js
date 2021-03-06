@@ -91,7 +91,7 @@ function DesktopMenu() {
       {localList.map(item => {
         return (
           <MenuItem key={Math.random()} onClick={() => selectLanguage(item)}>
-            {item[1]}
+            {item.languageName}
           </MenuItem>
         );
       })}
@@ -120,7 +120,7 @@ function DesktopMenu() {
         startIcon={<TranslateIcon />}
         endIcon={<ExpandMoreIcon />}
       >
-        {locale[1]}
+        {locale.languageName}
       </Button>
 
       <IconButton aria-label="show 4 new mails" color="inherit">
