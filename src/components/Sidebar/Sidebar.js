@@ -3,7 +3,6 @@ import { AccountCircle, Inbox, Mail, MoreVert } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -37,8 +36,6 @@ function Sidebar() {
     signOut();
     onDotMenuCLose();
   };
-
-  const onLoginClick = () => {};
 
   const menu = () => (
     <div className={classes.list}>
