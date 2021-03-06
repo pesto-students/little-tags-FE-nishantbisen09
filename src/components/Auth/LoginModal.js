@@ -11,7 +11,7 @@ import GoogleLoginButton from './GoogleLoginButton';
 import './login.css';
 import loginHeader from '../../assets/app-logo.png';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   dialogPaper: {
     minHeight: '200px',
     backgroundColor: 'rgb(72,89,107,0.1)',
@@ -23,8 +23,14 @@ const useStyles = makeStyles(() => ({
     marginTop: '10px',
     marginBottom: '10px',
   },
+
   loginButton: {
     margin: '0 8px',
+    alignSelf: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      margin: 0,
+    },
   },
 }));
 
