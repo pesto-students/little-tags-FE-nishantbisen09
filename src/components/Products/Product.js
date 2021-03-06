@@ -25,10 +25,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Product = ({ image, price, name, ratingCount }) => {
+const Product = ({ id, image, price, name, ratingCount, onClick }) => {
   const classes = useStyles();
   return (
-    <Card className={`${classes.root} product-card`} elevation={2}>
+    <Card className={`${classes.root} product-card`} elevation={2} onClick={() => onClick(id)}>
       <FavoriteButton className="fav-btn" isFavorite={false} />
       <CardMedia image={image} className={classes.media} />
       <CardContent className={classes.content}>
