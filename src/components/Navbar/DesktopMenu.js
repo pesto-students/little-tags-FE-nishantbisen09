@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import LanguageIcon from '@material-ui/icons/Language';
 import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import IconButton from '@material-ui/core/IconButton';
+import TranslateIcon from '@material-ui/icons/Translate';
 import Favorite from '@material-ui/icons/Favorite';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 function DesktopMenu() {
   const classes = useStyles();
 
-  const { setLocale: setLanguage } = useLanguage();
+  const { setLocale: setLanguage, locale } = useLanguage();
   const { isInitialized, isSignedIn, signOut, googleUser } = useGoogleAuth();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -94,7 +94,7 @@ function DesktopMenu() {
     >
       {localList.map(item => {
         return (
-          <MenuItem key={Math.random()} onClick={() => selectLanguage(item[0])}>
+          <MenuItem key={Math.random()} onClick={() => selectLanguage(item)}>
             {item[1]}
           </MenuItem>
         );
@@ -116,21 +116,23 @@ function DesktopMenu() {
         </>
       ) : null}
 
-      <IconButton
+      <Button
         aria-label="show languages"
         aria-controls={languageMenuId}
         aria-haspopup="true"
         onClick={handleLanguageMenuOpen}
-        color="inherit"
+        startIcon={<TranslateIcon />}
+        endIcon={<ExpandMoreIcon />}
       >
-        <LanguageIcon />
-      </IconButton>
+        {locale[1]}
+      </Button>
 
       <IconButton aria-label="show 4 new mails" color="inherit">
         <Badge badgeContent={4} color="primary">
           <ShoppingCart />
         </Badge>
       </IconButton>
+
       {renderMenu}
       {renderLanguageMenu}
     </div>

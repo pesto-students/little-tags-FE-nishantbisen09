@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import { Divider } from '@material-ui/core';
@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import GoogleLoginButton from './GoogleLoginButton';
 import './login.css';
 import loginHeader from '../../assets/app-logo.png';
@@ -22,12 +23,15 @@ const useStyles = makeStyles(() => ({
     marginTop: '10px',
     marginBottom: '10px',
   },
+  loginButton: {
+    margin: '0 8px',
+  },
 }));
 
 function LoginModal({ loading }) {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,7 +43,14 @@ function LoginModal({ loading }) {
 
   return (
     <>
-      <Button disabled={!loading} variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button
+        startIcon={<LockOpenIcon />}
+        disabled={!loading}
+        variant="contained"
+        color="primary"
+        onClick={handleClickOpen}
+        className={classes.loginButton}
+      >
         <FormattedMessage id="loginButtonText" />
       </Button>
 
@@ -57,7 +68,6 @@ function LoginModal({ loading }) {
             </div>
             <Divider />
             <div className="login-btn">
-              {' '}
               <GoogleLoginButton />
             </div>
           </div>
