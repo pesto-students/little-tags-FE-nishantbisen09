@@ -7,7 +7,7 @@ import QuantityContainer from '../components/QuantityContainer/QuantityContainer
 import SizeContainer from '../components/SizeContainer/SizeContainer';
 import products from '../data/products';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     marginTop: '50px',
@@ -18,6 +18,10 @@ const useStyles = makeStyles(() => ({
     width: '400px',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
+    [theme.breakpoints.down('sm')]: {
+      height: '300px',
+      width: '280px',
+    },
   },
   description: {
     maxWidth: '400px',
@@ -53,6 +57,9 @@ const useStyles = makeStyles(() => ({
     fontSize: '22px',
     marginRight: '8px',
   },
+  details: {
+    padding: '10px',
+  },
 }));
 
 const ProductDetail = props => {
@@ -77,42 +84,44 @@ const ProductDetail = props => {
         <div className={classes.image} style={{ backgroundImage: `url(${image})` }} />
       </Grid>
       <Grid item>
-        <h1 className={classes.title}>{title}</h1>
-        <h3 className={classes.price}>
-          {price && <FormattedNumber value={price} style="currency" currency="INR" />}
-        </h3>
-        <div className={classes.description}>
-          <p>{description}</p>
-        </div>
-        <div className={classes.rating}>
-          <b>{rating}.0</b>
-          <Star className={classes.star} />
-        </div>
-        <div className={classes.size}>
-          <b>Size </b>
-          <SizeContainer
-            value={currentSize}
-            sizes={sizes}
-            onClick={sizeValue => setCurrentSize(sizeValue)}
-          />
-        </div>
-        <div className={classes.quantity}>
-          <b>Quantity </b>
-          <QuantityContainer />
-        </div>
-        <Grid container spacing={8}>
-          <Grid item>
-            <Button variant="contained" color="primary">
-              BUY NOW
-            </Button>
+        <div className={classes.details}>
+          <h1 className={classes.title}>{title}</h1>
+          <h3 className={classes.price}>
+            {price && <FormattedNumber value={price} style="currency" currency="INR" />}
+          </h3>
+          <div className={classes.description}>
+            <p>{description}</p>
+          </div>
+          <div className={classes.rating}>
+            <b>{rating}.0</b>
+            <Star className={classes.star} />
+          </div>
+          <div className={classes.size}>
+            <b>Size </b>
+            <SizeContainer
+              value={currentSize}
+              sizes={sizes}
+              onClick={sizeValue => setCurrentSize(sizeValue)}
+            />
+          </div>
+          <div className={classes.quantity}>
+            <b>Quantity </b>
+            <QuantityContainer />
+          </div>
+          <Grid container spacing={8} justify="center">
+            <Grid item>
+              <Button variant="contained" color="primary">
+                BUY NOW
+              </Button>
+            </Grid>
+            <Grid item>
+              {' '}
+              <Button variant="outlined" color="secondary">
+                <ShoppingBasket className={classes.addToCart} /> <span>ADD TO CART</span>
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            {' '}
-            <Button variant="outlined" color="secondary">
-              <ShoppingBasket className={classes.addToCart} /> <span>ADD TO CART</span>
-            </Button>
-          </Grid>
-        </Grid>
+        </div>
       </Grid>
     </Grid>
   ) : (

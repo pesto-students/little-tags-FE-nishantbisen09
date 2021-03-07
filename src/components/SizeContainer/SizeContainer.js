@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     minWidth: '40px',
     minHeight: '40px',
     border: '1px solid #0000001f',
-    margin: '0 5px',
+    margin: '5px',
 
     '&:hover': {
       borderColor: '#3f51b5',
