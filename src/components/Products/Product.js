@@ -1,6 +1,8 @@
+/* eslint-disable react/style-prop-object */
 import React from 'react';
 import { Button, Card, CardContent, CardMedia, Grid, makeStyles } from '@material-ui/core';
 import './product.css';
+import { FormattedNumber } from 'react-intl';
 import FavoriteButton from './FavoriteButton';
 
 const useStyles = makeStyles(() => ({
@@ -25,7 +27,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Product = ({ id, image, price, name, ratingCount, onClick }) => {
+const Product = ({ id, image, price, currency, name, ratingCount, onClick }) => {
   const classes = useStyles();
   return (
     <Card className={`${classes.root} product-card`} elevation={2} onClick={() => onClick(id)}>
@@ -36,7 +38,9 @@ const Product = ({ id, image, price, name, ratingCount, onClick }) => {
         <div className="product-ratings">{ratingCount}</div>
         <Grid container justify="space-between" alignItems="center">
           <Grid item>
-            <span className="product-price">₹{price}</span>
+            <span className="product-price">
+              <FormattedNumber value={price} style="currency" currency={currency} />
+            </span>
           </Grid>
           <Grid item>
             <Button variant="contained" color="primary" className={classes.button}>

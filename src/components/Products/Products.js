@@ -25,20 +25,23 @@ const Products = ({ products }) => {
         <FormattedMessage id="featuredProducts" />
       </h3>
       <Grid container className={classes.root} justify="center" spacing={7}>
-        {products.map(({ image, price, name, ratingCount, id }) => {
-          return (
-            <Grid key={id} item>
-              <Product
-                id={id}
-                image={image}
-                price={price}
-                name={name}
-                ratingCount={ratingCount}
-                onClick={onProductCardClick}
-              />
-            </Grid>
-          );
-        })}
+        {products
+          .filter(({ featured }) => featured)
+          .map(({ image, price, name, ratingCount, id }) => {
+            return (
+              <Grid key={id} item>
+                <Product
+                  id={id}
+                  currency={price.currency}
+                  image={image}
+                  price={price.current_price}
+                  name={name}
+                  ratingCount={ratingCount}
+                  onClick={onProductCardClick}
+                />
+              </Grid>
+            );
+          })}
       </Grid>
     </>
   );
