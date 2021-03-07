@@ -8,14 +8,14 @@ import SearchPage from './pages/SearchPage';
 function App() {
   return (
     <>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/search/:query" component={SearchPage} />
+          <Route path="/search" component={SearchPage} />
         </Switch>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 }
