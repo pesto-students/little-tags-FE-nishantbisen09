@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './pages/HomePage';
@@ -17,7 +16,6 @@ function App() {
         </Switch>
       </BrowserRouter>
       <Footer />
-      <ToastContainer />
     </>
   );
 }
