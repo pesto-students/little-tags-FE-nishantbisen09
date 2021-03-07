@@ -38,18 +38,18 @@ export default makeStyles(theme => ({
   menuHeader: {
     padding: '8px',
     fontWeight: '500',
-    marginTop: '5px',
+    margin: '5px 15px',
   },
   listItemStyle: {
-    color: '#000000a1',
+    color: '#3F51B5',
     transition: 'color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     '&:hover': {
-      backgroundColor: '#00adb521',
-      color: '#00ADB5',
+      borderColor: '#3f51b5',
+      backgroundColor: '#3f51b51f',
     },
     '&:focus': {
-      backgroundColor: '#00adb521',
-      color: '#00ADB5',
+      borderColor: '#3f51b5',
+      backgroundColor: '#3f51b51f',
     },
   },
   sidebarUser: {
