@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import { Button, ButtonGroup, Hidden, makeStyles } from '@material-ui/core';
+import { Button, Hidden, makeStyles } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 import Slider from '@material-ui/core/Slider';
 import fuseSearch from '../components/Search/FuseSearch';
