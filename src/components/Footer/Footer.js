@@ -7,6 +7,10 @@ const useStyle = makeStyles(() => ({
     backgroundColor: '#1B1642',
     marginTop: 20,
     color: 'white',
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    width: '100%',
   },
   footer: {
     padding: '15px',

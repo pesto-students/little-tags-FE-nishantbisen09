@@ -11,5 +11,9 @@ export default {
     signInWithGoogle: 'Sign in with Google',
     featuredAdTitle: 'Experience your music like {lineBreak} never before',
     featuredProducts: 'Featured Products',
+    searchResultsFor: 'Search results for',
+    priceRange: 'Price range',
+    applyFilter: 'apply filter',
+    addToCart: 'Add to cart',
   },
 };

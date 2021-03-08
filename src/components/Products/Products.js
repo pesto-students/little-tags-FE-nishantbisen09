@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
 import Product from './Product';
 
 const useStyles = makeStyles(() => ({
@@ -11,7 +10,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Products = ({ products }) => {
+const Products = ({ products, heading, position, className, spacing }) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -20,30 +19,26 @@ const Products = ({ products }) => {
   };
 
   return (
-    <>
-      <h3 className="featured-products-header">
-        <FormattedMessage id="featuredProducts" />
-      </h3>
-      <Grid container className={classes.root} justify="center" spacing={7}>
-        {products
-          .filter(({ featured }) => featured)
-          .map(({ image, price, name, ratingCount, id }) => {
-            return (
-              <Grid key={id} item>
-                <Product
-                  id={id}
-                  currency={price.currency}
-                  image={image}
-                  price={price.current_price}
-                  name={name}
-                  ratingCount={ratingCount}
-                  onClick={onProductCardClick}
-                />
-              </Grid>
-            );
-          })}
+    <div className={className}>
+      <h3 className="featured-products-header">{heading}</h3>
+      <Grid container className={classes.root} justify={position} spacing={spacing}>
+        {products.map(({ gallery, price, title, ratingCount, id }) => {
+          return (
+            <Grid key={id} item>
+              <Product
+                id={id}
+                currency={price.currency}
+                image={gallery[0]} // this will be removed after implementing image slider here
+                price={price.current_price}
+                name={title}
+                ratingCount={ratingCount}
+                onClick={onProductCardClick}
+              />
+            </Grid>
+          );
+        })}
       </Grid>
-    </>
+    </div>
   );
 };
 

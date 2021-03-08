@@ -37,4 +37,10 @@ export default makeStyles(theme => ({
       width: '36ch',
     },
   },
+  productLink: {
+    textDecoration: 'inherit',
+    color: 'inherit',
+    cursor: 'pointer',
+    borderBottom: '1px solid grey',
+  },
 }));

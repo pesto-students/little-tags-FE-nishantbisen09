@@ -11,5 +11,9 @@ export default {
     signInWithGoogle: 'ಗೂಗಲ್‌ನೊಂದಿಗೆ ನಮೂದಿಸಿ',
     featuredAdTitle: 'ನೀವು ಮೊದಲು ಈ ರೀತಿಯಾಗಿ{lineBreak} ಸಂಗೀತವನ್ನು ಅನುಭವಿಸಿಲ್ಲ',
     featuredProducts: 'ವೈಶಿಷ್ಟ್ಯಗೊಳಿಸಿದ ಉತ್ಪನ್ನಗಳು',
+    searchResultsFor: 'ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ',
+    priceRange: 'ಬೆಲೆ ಶ್ರೇಣಿ',
+    applyFilter: 'ಫಿಲ್ಟರ್ ಅನ್ನು ಅನ್ವಯಿಸಿ',
+    addToCart: 'ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ',
   },
 };

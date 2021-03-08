@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +13,7 @@ import DesktopMenu from './DesktopMenu';
 
 function Navbar() {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <div className={classes.grow}>
@@ -19,7 +21,12 @@ function Navbar() {
         <Toolbar>
           <Sidebar />
 
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography
+            className={classes.title}
+            onClick={() => history.push('/')}
+            variant="h6"
+            noWrap
+          >
             <img src={AppLogo} alt="app-logo" className={classes.logo} />
           </Typography>
 

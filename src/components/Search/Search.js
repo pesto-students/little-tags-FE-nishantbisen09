@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link, useHistory } from 'react-router-dom';
 import useStyles from './searchStyles';
 import fuse from './FuseSearch';
+import Loader from '../Loader/Loader';
 
 function Search() {
   const classes = useStyles();
@@ -12,8 +13,12 @@ function Search() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const handleChange = event => {
-    setSearchQuery(event.target.value);
+  const [isLoading, setIsLoading] = useState(false);
+  const fakeLoader = async () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   };
 
   useEffect(() => {
@@ -21,11 +26,19 @@ function Search() {
     setSearchResults(results);
   }, [searchQuery]);
 
+  const handleChange = async event => {
+    setSearchQuery(event.target.value);
+    await fakeLoader();
+  };
+
+  const isSearchInputValid = query => query !== '';
+
   const handleSearch = e => {
     e.preventDefault();
+    if (!isSearchInputValid(searchQuery)) return;
     const potentialCategory = searchResults.length ? searchResults[0].item.category : '';
     setShowResults(false);
-    history.push(`/search?q=${searchQuery}&c=${potentialCategory}&pr=0-0`);
+    history.push(`/search?q=${searchQuery}&c=${potentialCategory}`);
   };
 
   const handleRoute = to => {
@@ -64,27 +77,31 @@ function Search() {
         }`}
       >
         <ul className="px-2 py-2 m-0">
-          {searchResults.length ? (
+          {searchResults.length && !isLoading ? (
             <>
               {searchResults.map(result => (
-                <li key={result.item.productId} className="py-2 px-3 searchedElement">
-                  <Link
-                    to={{
-                      pathname: `/product-details/${result.item.productId}`,
+                <Link
+                  className={classes.productLink}
+                  key={result.item.id}
+                  to={{
+                    pathname: `/product-detail/${result.item.id}`,
+                    state: { fromHomepage: true },
+                  }}
+                  onMouseDown={() =>
+                    handleRoute({
+                      pathname: `/product-detail/${result.item.id}`,
                       state: { fromHomepage: true },
-                    }}
-                    onMouseDown={() =>
-                      handleRoute({
-                        pathname: `/product-details/${result.item.productId}`,
-                        state: { fromHomepage: true },
-                      })
-                    }
-                  >
+                    })
+                  }
+                  tabIndex="0"
+                >
+                  {' '}
+                  <li className="py-3 px-3 searchedElement">
                     <span className="d-flex pt-2 pr-2 pb-1 text-primary searchResultTitle">
                       {result.item.title}
                     </span>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               ))}
             </>
           ) : (
@@ -95,6 +112,7 @@ function Search() {
           )}
         </ul>
       </div>
+      <Loader isLoading={isLoading} />
     </div>
   );
 }

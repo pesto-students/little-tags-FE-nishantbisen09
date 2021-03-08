@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import productList from '../../data/productsList';
+import products from '../../data/products';
 
 const options = {
   // isCaseSensitive: false,
@@ -17,6 +17,6 @@ const options = {
   keys: ['title', 'description'],
 };
 
-const fuseSearch = new Fuse(productList.products, options);
+const fuseSearch = new Fuse(products, options);
 
 export default fuseSearch;

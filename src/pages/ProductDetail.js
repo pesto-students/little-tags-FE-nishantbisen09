@@ -3,6 +3,7 @@ import { Button, Grid, makeStyles } from '@material-ui/core';
 import { ShoppingBasket, Star } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { FormattedNumber } from 'react-intl';
+import Loader from '../components/Loader/Loader';
 import QuantityContainer from '../components/QuantityContainer/QuantityContainer';
 import SizeContainer from '../components/SizeContainer/SizeContainer';
 import products from '../data/products';
@@ -18,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     width: '400px',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
+    backgroundPosition: 'center',
     [theme.breakpoints.down('sm')]: {
       height: '300px',
       width: '280px',
@@ -58,33 +60,48 @@ const useStyles = makeStyles(theme => ({
     marginRight: '8px',
   },
   details: {
-    padding: '10px',
+    padding: '20px',
   },
   totalReviews: {
     marginLeft: '20px',
+  },
+  imageContainer: {
+    border: '0.5px solid #3F51B5',
+    [theme.breakpoints.down('sm')]: {
+      border: 'none',
+    },
   },
 }));
 
 const ProductDetail = props => {
   const classes = useStyles();
   const [productDetails, setProductDetails] = useState({});
-  const { image, description, title, reviews, sizes, price } = productDetails;
+  const { gallery, description, title, reviews, sizes, price } = productDetails;
   const [currentSize, setCurrentSize] = useState();
+  const { match } = props;
+  const productID = match.params.id;
+  const [isLoading, setIsLoading] = useState(false);
+  const fakeLoader = async () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  };
 
   const fetchProductDetails = () => {
-    console.log(props.match.params.id);
     const details = products.find(({ id }) => id === props.match.params.id);
     setProductDetails(details);
   };
 
   useEffect(() => {
+    fakeLoader();
     fetchProductDetails();
-  }, []);
+  }, [productID]);
 
   return productDetails.title ? (
     <Grid container justify="center" spacing={10} className={classes.root}>
-      <Grid item>
-        <div className={classes.image} style={{ backgroundImage: `url(${image})` }} />
+      <Grid item className={classes.imageContainer}>
+        <div className={classes.image} style={{ backgroundImage: `url(${gallery[0]})` }} />
       </Grid>
       <Grid item>
         <div className={classes.details}>
@@ -120,7 +137,7 @@ const ProductDetail = props => {
             <b>Quantity </b>
             <QuantityContainer />
           </div>
-          <Grid container spacing={8} justify="center">
+          <Grid container spacing={8}>
             <Grid item>
               <Button variant="contained" color="primary">
                 BUY NOW
@@ -134,6 +151,7 @@ const ProductDetail = props => {
           </Grid>
         </div>
       </Grid>
+      <Loader isLoading={isLoading} />
     </Grid>
   ) : (
     <></>
