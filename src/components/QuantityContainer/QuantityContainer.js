@@ -29,18 +29,18 @@ const QuantityContainer = () => {
         variant="contained"
         color="primary"
         className={classes.actionBtn}
-        onClick={() => setQuantity(quantity + 1)}
+        onClick={() => quantity > 1 && setQuantity(quantity - 1)}
       >
-        +
+        -
       </Button>
       <span className={classes.quantity}>{quantity}</span>
       <Button
         variant="contained"
         color="primary"
         className={classes.actionBtn}
-        onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+        onClick={() => setQuantity(quantity + 1)}
       >
-        -
+        +
       </Button>
     </div>
   );

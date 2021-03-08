@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Card, CardContent, CardMedia, Grid, makeStyles } from '@material-ui/core';
 import './product.css';
-import { FormattedNumber } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 import FavoriteButton from './FavoriteButton';
 
 const useStyles = makeStyles(() => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
     height: 0,
     paddingTop: '85%',
     backgroundSize: 'contain',
-    backgroundColor: '#E8EAF6',
+    backgroundColor: '#e8eaf6a3',
   },
   content: {
     paddingBottom: '16px !important',
@@ -43,8 +43,13 @@ const Product = ({ id, image, price, currency, name, ratingCount, onClick }) => 
             </span>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="primary" className={classes.button}>
-              ADD TO CART
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              onClick={event => event.stopPropagation()}
+            >
+              <FormattedMessage id="addToCart" />
             </Button>
           </Grid>
         </Grid>

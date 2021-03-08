@@ -25,7 +25,8 @@ const FavoriteButton = ({ onClick, isFavorite, className }) => {
     <div className={className}>
       <Button
         className={classes.root}
-        onClick={() => {
+        onClick={event => {
+          event.stopPropagation();
           setFavoriteState(!favoriteState);
           if (onClick) onClick();
         }}

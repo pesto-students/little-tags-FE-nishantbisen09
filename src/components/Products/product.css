@@ -11,6 +11,10 @@
 .product-name {
   color: #2d3748;
   margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .product-price {

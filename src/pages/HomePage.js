@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import AppImageSlider from '../components/AppImageSlider/AppImageSlider';
 import Categories from '../components/Categories/Categories';
 import FeaturedAdd from '../components/FeaturedAd/FeaturedAd';
@@ -7,12 +8,20 @@ import topCategories from '../data/categories';
 import products from '../data/products';
 
 function HomePage() {
+  const getFeaturedProducts = () => products.filter(({ featured }) => featured);
+
   return (
     <>
       <AppImageSlider />
       <Categories categories={topCategories} />
       <FeaturedAdd />
-      <Products products={products} />
+      <Products
+        className="featured-products"
+        position="center"
+        heading={<FormattedMessage id="featuredProducts" />}
+        products={getFeaturedProducts()}
+        spacing={8}
+      />
     </>
   );
 }

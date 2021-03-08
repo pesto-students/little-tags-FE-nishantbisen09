@@ -13,6 +13,7 @@ export default makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     padding: 5,
+    cursor: 'pointer',
   },
 
   title: {
