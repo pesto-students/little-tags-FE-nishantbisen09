@@ -1,6 +1,10 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import CategoryCard from './CategoryCard';
 import './categories.css';
 
@@ -13,6 +17,7 @@ const useStyles = makeStyles(() => ({
 
 const Categories = ({ categories }) => {
   const classes = useStyles();
+  const history = useHistory();
   return (
     <div className="top-categories">
       <h3 className="top-categories-header">
@@ -22,7 +27,10 @@ const Categories = ({ categories }) => {
         {categories.map(category => {
           return (
             <Grid key={category.name} item lg>
-              <CategoryCard category={category} />
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+              <div onClick={() => history.push(`/search?q=${category.name}&c=${category.name}`)}>
+                <CategoryCard category={category} />
+              </div>
             </Grid>
           );
         })}

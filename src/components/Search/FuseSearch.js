@@ -14,7 +14,7 @@ const options = {
   // useExtendedSearch: false,
   // ignoreLocation: false,
   // ignoreFieldNorm: false,
-  keys: ['title', 'description'],
+  keys: ['title', 'description', 'category'],
 };
 
 const fuseSearch = new Fuse(products, options);

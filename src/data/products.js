@@ -9,7 +9,7 @@ const products = [
     description:
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['XS', 'L', 'XL'],
-    category: 'Winter wear',
+    category: 'Mens',
     price: {
       currency: 'INR',
       current_price: 799,
@@ -42,6 +42,7 @@ const products = [
   {
     id: 'B087625TMW',
     title: 'Long Coat',
+    category: 'Womens',
     price: {
       currency: 'INR',
       current_price: 1599,
@@ -62,7 +63,7 @@ const products = [
     description:
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['XS', 'S', 'M'],
-    category: 'Sarees',
+    category: 'Womens',
     featured: false,
     price: {
       before_price: 0,
@@ -106,6 +107,31 @@ const products = [
       'https://rukminim1.flixcart.com/image/781/937/jm573ww0/lehenga-choli/4/w/n/free-mdl19-define-jewellery-original-imaf948fgv5jhpkg.jpeg?q=50',
     ],
     url: `${process.env.REACT_APP_FRONT_END_URL}/product-detail/B01N2K14U7`,
+  },
+  {
+    id: 'B01N2K15U7',
+    title: 'Printed, Geometric Print Kanjivaram Poly Silk Saree  (Multicolor, Purple, Yellow)',
+    description:
+      'Saree Fabric : Poly Silk, Saree Blouse Fabric : Poly Silk, Saree Work : Printed, Saree Blouse Work :Printed great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+    sizes: ['X', 'XS', 'L'],
+    category: "Women's Sarees",
+    featured: false,
+    fastDelivery: true,
+    bestSeller: false,
+    price: {
+      currency: 'INR',
+      current_price: 349,
+      discounted: true,
+      savings_amount: 1194,
+    },
+    reviews: { rating: 4.7, total_reviews: 15209 },
+    thumbnail:
+      'https://rukminim1.flixcart.com/image/781/937/jm573ww0/lehenga-choli/4/w/n/free-mdl19-define-jewellery-original-imaf948fythg85yp.jpeg?q=50',
+    gallery: [
+      'https://rukminim1.flixcart.com/image/880/1056/k6fd47k0pkrrdj/sari/n/j/u/green-beige-red-yellow-1363sj505-1399sj503-siril-original-imafntm5uvc8jyg2.jpeg?q=50',
+      'https://rukminim1.flixcart.com/image/880/1056/k51cpe80pkrrdj/sari/w/c/z/free-multicolor-1363sj501-siril-1363sj505-original-imafntm5dhaqgvb4.jpeg?q=50',
+    ],
+    url: `${process.env.REACT_APP_FRONT_END_URL}/product-detail/B01N2K15U7`,
   },
 ];
 

@@ -6,7 +6,6 @@ import Product from './Product';
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    marginTop: 15,
   },
 }));
 
@@ -20,7 +19,7 @@ const Products = ({ products, heading, position, className, spacing }) => {
 
   return (
     <div className={className}>
-      <h3 className="featured-products-header">{heading}</h3>
+      {heading && <h3 className="featured-products-header">{heading}</h3>}
       <Grid container className={classes.root} justify={position} spacing={spacing}>
         {products.map(({ gallery, price, title, ratingCount, id }) => {
           return (
