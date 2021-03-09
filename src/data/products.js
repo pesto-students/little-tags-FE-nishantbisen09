@@ -1,6 +1,6 @@
-import hoodie from '../assets/images/products/hoodie.png';
-import headphone from '../assets/images/products/headphone.png';
-import longCoat from '../assets/images/products/long-coat.png';
+import hoodie from '../assets/images/products/hoodie.webp';
+import headphone from '../assets/images/products/headphone.webp';
+import longCoat from '../assets/images/products/long-coat.webp';
 
 const products = [
   {

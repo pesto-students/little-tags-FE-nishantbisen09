@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
-import sliderImage1 from '../../assets/slider-img-1.png';
-import sliderImage2 from '../../assets/slider-img-2.png';
+import sliderImage1 from '../../assets/slider-img-1.webp';
+import sliderImage2 from '../../assets/slider-img-2.webp';
 import './appImageSlider.css';
 
 const sliderImageDesktopStyles = {
