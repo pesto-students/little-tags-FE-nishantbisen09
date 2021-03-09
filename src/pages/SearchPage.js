@@ -50,7 +50,8 @@ const marks = [
 
 const useStyles = makeStyles(theme => ({
   heading: {
-    margin: '15px',
+    marginBottom: '30px',
+    marginTop: '15px',
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       fontSize: '20px',
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   filterBtn: {
-    width: '150px',
+    width: '100%',
   },
   paper: {
     marginBottom: '50px',
@@ -139,18 +140,20 @@ function SearchPage() {
     <div>
       <div>
         <Hidden smUp>
-          <Grid container justify="space-evenly" alignItems="center" spacing={2} className="py-3">
-            <Grid item>
-              <Button variant="outlined" className={classes.filterBtn} color="secondary">
-                Sort
-              </Button>
+          <Container maxWidth="sm">
+            <Grid container justify="space-evenly" alignItems="center" spacing={2} className="py-3">
+              <Grid item xs={6}>
+                <Button variant="outlined" className={classes.filterBtn} color="secondary">
+                  Sort
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button variant="outlined" className={classes.filterBtn} color="primary">
+                  Filter
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Button variant="outlined" className={classes.filterBtn} color="primary">
-                Filter
-              </Button>
-            </Grid>
-          </Grid>
+          </Container>
         </Hidden>
       </div>
       <h2 className={classes.heading}>
@@ -160,48 +163,6 @@ function SearchPage() {
         <Grid container spacing={2}>
           <Hidden smDown>
             <Grid item md={3} xs={12}>
-              <Paper className={classes.paper}>
-                <Grid container spacing={5} justify="center">
-                  <Grid item md={9} justify="center">
-                    <h2 className={classes.priceRange}>
-                      <FormattedMessage id="priceRange" />
-                    </h2>
-                    <Slider
-                      min={0}
-                      max={4000}
-                      value={searchOptions.priceRange}
-                      onChange={handleSliderChange}
-                      aria-labelledby="range-slider"
-                      step={500}
-                      marks={marks}
-                    />
-                    <Button variant="contained" color="primary" onClick={onFilterClick}>
-                      <FormattedMessage id="applyFilter" />
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Paper>
-              <Paper className={classes.paper}>
-                <Grid container spacing={5} justify="center">
-                  <Grid item md={9} justify="center">
-                    <h2 className={classes.priceRange}>
-                      <FormattedMessage id="priceRange" />
-                    </h2>
-                    <Slider
-                      min={0}
-                      max={4000}
-                      value={searchOptions.priceRange}
-                      onChange={handleSliderChange}
-                      aria-labelledby="range-slider"
-                      step={500}
-                      marks={marks}
-                    />
-                    <Button variant="contained" color="primary" onClick={onFilterClick}>
-                      <FormattedMessage id="applyFilter" />
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Paper>
               <Paper className={classes.paper}>
                 <Grid container spacing={5} justify="center">
                   <Grid item md={9} justify="center">
