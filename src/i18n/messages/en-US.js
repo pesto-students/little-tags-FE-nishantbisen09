@@ -15,5 +15,9 @@ export default {
     priceRange: 'Price range',
     applyFilter: 'apply filter',
     addToCart: 'Add to cart',
+    buyNow: 'Buy now',
+    totalRatings: 'total {reviewCount} reviews posted',
+    size: 'Size',
+    quantity: 'Quantity',
   },
 };

@@ -15,5 +15,9 @@ export default {
     priceRange: 'ಬೆಲೆ ಶ್ರೇಣಿ',
     applyFilter: 'ಫಿಲ್ಟರ್ ಅನ್ನು ಅನ್ವಯಿಸಿ',
     addToCart: 'ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ',
+    buyNow: 'ಈಗ ಖರೀದಿಸು',
+    totalRatings: 'ಒಟ್ಟು {reviewCount} ವಿಮರ್ಶೆಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿದೆ',
+    size: 'ಗಾತ್ರ',
+    quantity: 'ಪ್ರಮಾಣ',
   },
 };
