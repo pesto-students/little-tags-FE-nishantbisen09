@@ -1,7 +1,7 @@
 import { Button, Grid, Hidden } from '@material-ui/core';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import headphoneCover from '../../assets/headphone-cover.png';
+import headphoneCover from '../../assets/headphone-cover.webp';
 import './featuredAd.css';
 
 function FeaturedAd() {
