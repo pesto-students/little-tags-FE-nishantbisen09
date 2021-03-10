@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 
+const APP_URL = 'https://little-tags-app.netlify.app';
 context('Search functionality', () => {
   beforeEach(() => {
-    cy.visit('https://little-tags-app.netlify.app/');
+    cy.visit(APP_URL);
   });
 
   it('should show search page', () => {
