@@ -16,4 +16,4 @@ Open <http://localhost:3000> on your browser
 
 
 ## Project Link
-https://priceless-boyd-f65a14.netlify.app/
+https://little-tags-app.netlify.app/
