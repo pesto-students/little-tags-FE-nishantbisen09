@@ -1,13 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import AppImageSlider from '../components/AppImageSlider/AppImageSlider';
-import Categories from '../components/Categories/Categories';
-import FeaturedAdd from '../components/FeaturedAd/FeaturedAd';
-import Products from '../components/Products/Products';
-import topCategories from '../data/categories';
-import products from '../data/products';
+import AppImageSlider from '../../components/AppImageSlider/AppImageSlider';
+import Categories from '../../components/Categories/Categories';
+import FeaturedAdd from '../../components/FeaturedAd/FeaturedAd';
+import Products from '../../components/Products/Products';
+import topCategories from '../../data/categories';
+import products from '../../data/products';
 
-function HomePage() {
+function Home() {
   const getFeaturedProducts = () => products.filter(({ featured }) => featured);
 
   return (
@@ -26,4 +26,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Home;

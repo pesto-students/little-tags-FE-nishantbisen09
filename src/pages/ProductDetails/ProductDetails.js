@@ -1,90 +1,15 @@
 /* eslint-disable react/style-prop-object */
-import { Button, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Button, Container, Grid, Paper } from '@material-ui/core';
 import { ShoppingBasket, Star } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
-import Loader from '../components/Loader/Loader';
-import QuantityContainer from '../components/QuantityContainer/QuantityContainer';
-import SizeContainer from '../components/SizeContainer/SizeContainer';
-import products from '../data/products';
+import Loader from '../../components/Loader/Loader';
+import QuantityContainer from '../../components/QuantityContainer/QuantityContainer';
+import SizeContainer from '../../components/SizeContainer/SizeContainer';
+import products from '../../data/products';
+import useStyles from './ProductDetailsStyles';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: '50px',
-    marginBottom: '50px',
-    fontFamily: `'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif`,
-  },
-  image: {
-    height: '100%',
-    width: '100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-    backgroundPosition: 'center',
-  },
-  description: {
-    maxWidth: '600px',
-    marginBottom: 15,
-  },
-  title: {
-    marginBottom: 15,
-    [theme.breakpoints.down('md')]: {
-      fontSize: '20px',
-    },
-  },
-  price: {
-    marginBottom: 15,
-  },
-  rating: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  star: {
-    color: '#3f51b5',
-    fontSize: '20px',
-    marginLeft: '5px',
-  },
-  size: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  quantity: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  addToCart: {
-    fontSize: '22px',
-    marginRight: '8px',
-  },
-  details: {
-    padding: '20px',
-  },
-  totalReviews: {
-    marginLeft: '20px',
-  },
-  paper: {
-    boxShadow: '0px 3px 1px -2px #3f51b563, 0px 2px 2px 0px #3f51b563, 0px 1px 5px 0px #3f51b563',
-  },
-  imagePaper: {
-    display: 'flex',
-    justifyContent: 'center',
-    height: '100%',
-    [theme.breakpoints.down('md')]: {
-      height: '50vh',
-      width: '50vh',
-    },
-  },
-  actionBtn: {
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-    },
-  },
-}));
-
-const ProductDetail = props => {
+const ProductDetails = props => {
   const classes = useStyles();
   const [productDetails, setProductDetails] = useState({});
   const { gallery, description, title, reviews, sizes, price } = productDetails;
@@ -112,12 +37,12 @@ const ProductDetail = props => {
   return productDetails.title ? (
     <Container maxWidth="xl">
       <Grid container justify="center" spacing={3} className={classes.root}>
-        <Grid item md={3} sm={12}>
+        <Grid item md={3} lg={3} sm={12}>
           <Paper elevation={2} className={`${classes.paper} ${classes.imagePaper}`}>
             <div className={classes.image} style={{ backgroundImage: `url(${gallery[0]})` }} />
           </Paper>
         </Grid>
-        <Grid item md={9} sm={12}>
+        <Grid item md={9} lg={9} sm={12}>
           <Paper elevation={2} className={classes.paper}>
             <div className={classes.details}>
               <h1 className={classes.title}>{title}</h1>
@@ -191,4 +116,4 @@ const ProductDetail = props => {
   );
 };
 
-export default ProductDetail;
+export default ProductDetails;

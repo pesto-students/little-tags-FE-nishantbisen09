@@ -36,9 +36,8 @@ function Search() {
   const handleSearch = e => {
     e.preventDefault();
     if (!isSearchInputValid(searchQuery)) return;
-    const potentialCategory = searchResults.length ? searchResults[0].item.category : '';
     setShowResults(false);
-    history.push(`/search?q=${searchQuery}&c=${potentialCategory}`);
+    history.push(`/search?q=${searchQuery}`);
   };
 
   const handleRoute = to => {
