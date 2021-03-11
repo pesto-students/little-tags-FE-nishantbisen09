@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /// <reference types="cypress" />
 
 const APP_URL = 'https://little-tags-app.netlify.app';
