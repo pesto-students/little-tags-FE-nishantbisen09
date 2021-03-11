@@ -10,6 +10,7 @@ const products = [
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['XS', 'L', 'XL'],
     category: 'Mens',
+    categoryID: 2,
     price: {
       currency: 'INR',
       current_price: 799,
@@ -28,6 +29,7 @@ const products = [
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['L', 'XL'],
     category: 'Electronics',
+    categoryID: 3,
     price: {
       currency: 'INR',
       current_price: 578,
@@ -43,6 +45,7 @@ const products = [
     id: 'B087625TMW',
     title: 'Long Coat',
     category: 'Womens',
+    categoryID: 1,
     price: {
       currency: 'INR',
       current_price: 1599,
@@ -64,6 +67,7 @@ const products = [
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['XS', 'S', 'M'],
     category: 'Womens',
+    categoryID: 1,
     featured: false,
     price: {
       before_price: 0,
@@ -90,6 +94,7 @@ const products = [
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['X', 'XS'],
     category: "Women's Lehenga Cholis",
+    categoryID: 1,
     featured: false,
     fastDelivery: true,
     bestSeller: false,
@@ -115,6 +120,7 @@ const products = [
       'Saree Fabric : Poly Silk, Saree Blouse Fabric : Poly Silk, Saree Work : Printed, Saree Blouse Work :Printed great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
     sizes: ['X', 'XS', 'L'],
     category: "Women's Sarees",
+    categoryID: 1,
     featured: false,
     fastDelivery: true,
     bestSeller: false,

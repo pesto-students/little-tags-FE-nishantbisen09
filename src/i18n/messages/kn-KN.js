@@ -19,5 +19,8 @@ export default {
     totalRatings: 'ಒಟ್ಟು {reviewCount} ವಿಮರ್ಶೆಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿದೆ',
     size: 'ಗಾತ್ರ',
     quantity: 'ಪ್ರಮಾಣ',
+    filtersHeading: 'ಫಿಲ್ಟರ್‌ಗಳು',
+    sortFilter: 'ವಿಂಗಡಣೆ ಬೆಲೆ',
+    categories: 'ವಿಭಾಗಗಳು',
   },
 };

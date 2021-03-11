@@ -19,5 +19,8 @@ export default {
     totalRatings: 'total {reviewCount} reviews posted',
     size: 'Size',
     quantity: 'Quantity',
+    filtersHeading: 'Filters',
+    sortFilter: 'Sort price',
+    categories: 'Categories',
   },
 };
