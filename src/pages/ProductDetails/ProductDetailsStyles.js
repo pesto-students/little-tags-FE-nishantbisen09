@@ -64,7 +64,7 @@ export default makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     height: '100%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       height: '50vh',
       width: '50vh',
     },
