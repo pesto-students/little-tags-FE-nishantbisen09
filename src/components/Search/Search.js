@@ -49,18 +49,23 @@ function Search() {
 
   const isSearchInputValid = query => query !== '';
 
-  const handleSearch = e => {
-    e.preventDefault();
-    if (!isSearchInputValid(searchQuery)) return;
-    history.push(`/search?q=${searchQuery}`);
-  };
-
-  const handleClick = () => {
+  const handleClick = event => {
+    if (event.code === 'Enter' || !searchQuery.length) {
+      setIsSearchContainerOpen(false);
+      return;
+    }
     setIsSearchContainerOpen(true);
   };
 
   const handleClickAway = () => {
     setIsSearchContainerOpen(false);
+  };
+
+  const handleSearch = e => {
+    e.preventDefault();
+    if (!isSearchInputValid(searchQuery)) return;
+    setIsSearchContainerOpen(false);
+    history.push(`/search?q=${searchQuery}`);
   };
 
   const handleRoute = to => {
@@ -80,7 +85,6 @@ function Search() {
             <FormattedMessage id="search">
               {placeHolderText => (
                 <InputBase
-                  onKeyPress={handleClick}
                   onKeyUp={handleClick}
                   onClick={handleClick}
                   value={searchQuery}
@@ -111,7 +115,7 @@ function Search() {
                       className="py-3 px-3 searchedElement"
                     >
                       <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={result.item.gallery[0]} />
+                        <Avatar alt={result.item.title} src={result.item.gallery[0]} />
                       </ListItemAvatar>
                       {result.item.title}
                     </ListItem>
