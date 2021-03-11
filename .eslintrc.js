@@ -5,7 +5,6 @@ module.exports = {
     node: true,
     browser: true,
     jest: true,
-    'cypress/globals': true,
   },
   extends: ['airbnb', 'plugin:prettier/recommended'],
   rules: {
