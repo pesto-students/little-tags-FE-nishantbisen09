@@ -139,6 +139,58 @@ const products = [
     ],
     url: `${process.env.REACT_APP_FRONT_END_URL}/product-detail/B01N2K15U7`,
   },
+  {
+    id: 'B01N2K90U7',
+    title: 'Realme C12 (Power Silver, 32 GB)  (3 GB RAM)',
+    description:
+      'Keep work and entertainment going with the realme C12 smartphone featuring a 6000 mAh battery. It also comes with the Super Power Saving mode that lets you use the basic features of your phone when it is low on charge. What’s more, you can capture your surroundings well with the help of the 13 MP AI triple rear camera. You can make use of the Super Nightscape mode to click stunning pictures even in low-lit conditions.',
+    sizes: ['X', 'XS', 'L'],
+    category: 'Electronics',
+    categoryID: 3,
+    featured: false,
+    fastDelivery: true,
+    bestSeller: false,
+    price: {
+      currency: 'INR',
+      current_price: 8499,
+      discounted: true,
+      savings_amount: 1194,
+    },
+    reviews: { rating: 4.7, total_reviews: 19209 },
+    thumbnail:
+      'https://rukminim1.flixcart.com/image/781/937/jm573ww0/lehenga-choli/4/w/n/free-mdl19-define-jewellery-original-imaf948fythg85yp.jpeg?q=50',
+    gallery: [
+      'https://rukminim1.flixcart.com/image/416/416/kdxfc7k0/mobile/h/c/e/realme-c12-rmx2189-original-imafupuyahzxtwfq.jpeg?q=70',
+      'https://rukminim1.flixcart.com/image/416/416/kdxfc7k0/mobile/h/c/e/realme-c12-rmx2189-original-imafupwqwuxp7faq.jpeg?q=70',
+    ],
+    url: `${process.env.REACT_APP_FRONT_END_URL}/product-detail/B01N2K90U7`,
+  },
+  {
+    id: 'B01N2K92U7',
+    title: 'Net Embroidered, Embellished Gown/Anarkali Kurta & Bottom Material  (Semi Stitched)',
+    description:
+      'surani brothers Fabric by Heavy Net Semi Stitched Round Neck Full Length Embroidered Gown,  surani brothers Fabric by Heavy Net Semi Stitched Round Neck Full Length Embroidered Gown',
+    sizes: ['X', 'XS', 'L'],
+    category: 'Womens Suits',
+    categoryID: 1,
+    featured: false,
+    fastDelivery: true,
+    bestSeller: false,
+    price: {
+      currency: 'INR',
+      current_price: 1137,
+      discounted: true,
+      savings_amount: 200,
+    },
+    reviews: { rating: 3.7, total_reviews: 11209 },
+    thumbnail:
+      'https://rukminim1.flixcart.com/image/781/937/jm573ww0/lehenga-choli/4/w/n/free-mdl19-define-jewellery-original-imaf948fythg85yp.jpeg?q=50',
+    gallery: [
+      'https://rukminim1.flixcart.com/image/880/1056/k6b2snk0/gown/f/v/6/na-free-gd-1145-kreadaa-na-original-imaffhrwbmgjatt6.jpeg?q=50',
+      'https://rukminim1.flixcart.com/image/880/1056/kb9ou4w0/fabric/p/h/4/yes-semi-stitched-1145-orange-surani-brothers-original-imafsngghy65qays.jpeg?q=50',
+    ],
+    url: `${process.env.REACT_APP_FRONT_END_URL}/product-detail/B01N2K92U7`,
+  },
 ];
 
 export default products;

@@ -92,3 +92,20 @@ body {
 .featured-products {
   margin-bottom: 100px;
 }
+.slick-next::before {
+  color: #2d3748 !important;
+}
+
+.slick-prev::before {
+  color: #2d3748 !important;
+}
+
+.similar-products {
+  max-width: 85vw;
+}
+
+.slide-item {
+  display: flex !important;
+  justify-content: center;
+  padding: 20px 0;
+}

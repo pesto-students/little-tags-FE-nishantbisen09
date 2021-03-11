@@ -22,5 +22,6 @@ export default {
     filtersHeading: 'Filters',
     sortFilter: 'Sort price',
     categories: 'Categories',
+    similarProducts: 'Similar Products',
   },
 };

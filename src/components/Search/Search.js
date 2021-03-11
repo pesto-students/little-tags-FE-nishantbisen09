@@ -4,7 +4,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { FormattedMessage } from 'react-intl';
 import { Link, useHistory } from 'react-router-dom';
 import useStyles from './searchStyles';
-import fuse from './FuseSearch';
+import fuseSearch from './FuseSearch';
 import Loader from '../Loader/Loader';
 
 function Search() {
@@ -22,7 +22,9 @@ function Search() {
   };
 
   useEffect(() => {
-    const results = fuse.search(searchQuery).slice(0, 15);
+    const results = fuseSearch(['title', 'description', 'category'])
+      .search(searchQuery)
+      .slice(0, 15);
     setSearchResults(results);
   }, [searchQuery]);
 

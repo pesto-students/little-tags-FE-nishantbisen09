@@ -13,7 +13,16 @@ const sliderImageDesktopStyles = {
 
 const AppImageSlider = () => {
   return (
-    <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1} arrows>
+    <Slider
+      dots
+      infinite
+      speed={500}
+      slidesToShow={1}
+      slidesToScroll={1}
+      arrows
+      autoplay
+      autoplaySpeed={3000}
+    >
       <div>
         <div
           style={{

@@ -22,5 +22,6 @@ export default {
     filtersHeading: 'ಫಿಲ್ಟರ್‌ಗಳು',
     sortFilter: 'ವಿಂಗಡಣೆ ಬೆಲೆ',
     categories: 'ವಿಭಾಗಗಳು',
+    similarProducts: 'ಇದೇ ರೀತಿಯ ಉತ್ಪನ್ನಗಳು',
   },
 };
