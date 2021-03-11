@@ -184,7 +184,7 @@ const products = [
     },
     reviews: { rating: 3.7, total_reviews: 11209 },
     thumbnail:
-      'https://rukminim1.flixcart.com/image/781/937/jm573ww0/lehenga-choli/4/w/n/free-mdl19-define-jewellery-original-imaf948fythg85yp.jpeg?q=50',
+      'https://rukminim1.flixcart.com/image/880/1056/k6b2snk0/gown/f/v/6/na-free-gd-1145-kreadaa-na-original-imaffhrwbmgjatt6.jpeg?q=50',
     gallery: [
       'https://rukminim1.flixcart.com/image/880/1056/k6b2snk0/gown/f/v/6/na-free-gd-1145-kreadaa-na-original-imaffhrwbmgjatt6.jpeg?q=50',
       'https://rukminim1.flixcart.com/image/880/1056/kb9ou4w0/fabric/p/h/4/yes-semi-stitched-1145-orange-surani-brothers-original-imafsngghy65qays.jpeg?q=50',
