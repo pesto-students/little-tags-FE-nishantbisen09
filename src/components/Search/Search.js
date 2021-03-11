@@ -49,8 +49,9 @@ function Search() {
   };
 
   const handleRoute = to => {
+    const { productId } = to;
     handleClickAway();
-    history.push(to.pathname);
+    history.push(`/product-detail/${productId}`);
   };
 
   return (
@@ -89,7 +90,7 @@ function Search() {
                       button
                       onClick={() =>
                         handleRoute({
-                          pathname: `/product-detail/${result.item.id}`,
+                          productId: result.item.id,
                         })
                       }
                       className="py-3 px-3 searchedElement"
