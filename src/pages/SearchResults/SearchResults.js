@@ -87,7 +87,9 @@ function SearchResults() {
         ? convertStringsToNumbers(params.get('pr').split('-'))
         : [0, 4000];
     const getFuzzySearchedItems = () => {
-      const items = fuseSearch.search(queryString).slice(0, 30);
+      const items = fuseSearch(['title', 'description', 'category'])
+        .search(queryString)
+        .slice(0, 30);
       return items.map(item => item.item);
     };
     const { categoriesFilter } = searchOptions.filterConfig;

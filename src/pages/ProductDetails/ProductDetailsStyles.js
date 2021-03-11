@@ -74,4 +74,11 @@ export default makeStyles(theme => ({
       width: '100%',
     },
   },
+  similarProducts: {
+    marginBottom: '60px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+  },
 }));

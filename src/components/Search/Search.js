@@ -8,8 +8,8 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import fuse from './FuseSearch';
 import useStyles from './searchStyles';
+import fuseSearch from './FuseSearch';
 
 function Search() {
   const classes = useStyles();
@@ -19,7 +19,9 @@ function Search() {
   const [isSearchContainerOpen, setIsSearchContainerOpen] = useState(false);
 
   useEffect(() => {
-    const results = fuse.search(searchQuery).slice(0, 15);
+    const results = fuseSearch(['title', 'description', 'category'])
+      .search(searchQuery)
+      .slice(0, 15);
     setSearchResults(results);
   }, [searchQuery]);
 
