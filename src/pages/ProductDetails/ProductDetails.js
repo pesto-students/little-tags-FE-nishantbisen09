@@ -3,6 +3,7 @@ import { Button, Container, Grid, Paper } from '@material-ui/core';
 import { ShoppingBasket, Star } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
+import { connect } from 'react-redux';
 import Loader from '../../components/Loader/Loader';
 import QuantityContainer from '../../components/QuantityContainer/QuantityContainer';
 import SimilarProducts from '../../components/SimilarProducts/SimilarProducts';
@@ -10,13 +11,14 @@ import SizeContainer from '../../components/SizeContainer/SizeContainer';
 import products from '../../data/products';
 import useStyles from './ProductDetailsStyles';
 import fuseSearch from '../../components/Search/FuseSearch';
+import { addItemToCart } from '../../redux/actions/cart';
 
 const ProductDetails = props => {
   const classes = useStyles();
   const [productDetails, setProductDetails] = useState({});
-  const { gallery, description, title, reviews, sizes, price, category } = productDetails;
+  const { gallery, description, title, reviews, sizes, price, category, id } = productDetails;
   const [currentSize, setCurrentSize] = useState();
-  const { match } = props;
+  const { match, addItemToCart: addCartItem } = props;
   const productID = match.params.id;
   const [isLoading, setIsLoading] = useState(false);
   const fakeLoader = async () => {
@@ -27,7 +29,7 @@ const ProductDetails = props => {
   };
 
   const fetchProductDetails = () => {
-    const details = products.find(({ id }) => id === props.match.params.id);
+    const details = products.find(({ id: itemID }) => itemID === props.match.params.id);
     setProductDetails(details);
   };
 
@@ -108,7 +110,12 @@ const ProductDetails = props => {
                     </Button>
                   </Grid>
                   <Grid item xs={12} md="auto">
-                    <Button variant="outlined" color="secondary" className={classes.actionBtn}>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      className={classes.actionBtn}
+                      onClick={() => addCartItem(id)}
+                    >
                       <ShoppingBasket className={classes.addToCart} />{' '}
                       <FormattedMessage id="addToCart" />
                     </Button>
@@ -133,4 +140,12 @@ const ProductDetails = props => {
   );
 };
 
-export default ProductDetails;
+const mapDispatchToProps = {
+  addItemToCart,
+};
+
+const mapStateToProps = state => ({
+  productIds: state.productIds,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

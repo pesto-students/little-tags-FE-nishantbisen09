@@ -9,6 +9,7 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useSelector } from 'react-redux';
 import LoginModal from '../Auth/LoginModal';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import { useLanguage } from '../../i18n/LanguageProvider';
@@ -25,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 function DesktopMenu() {
   const classes = useStyles();
+  const totalCartItems = useSelector(state => state.cartReducer.totalCartItems);
 
   const { setLocale: setLanguage, locale } = useLanguage();
   const { isInitialized, isSignedIn, signOut, googleUser } = useGoogleAuth();
@@ -124,7 +126,7 @@ function DesktopMenu() {
       </Button>
 
       <IconButton aria-label="show 4 new mails" color="inherit">
-        <Badge badgeContent={4} color="primary">
+        <Badge badgeContent={totalCartItems} color="primary">
           <ShoppingCart />
         </Badge>
       </IconButton>
