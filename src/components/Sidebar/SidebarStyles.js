@@ -23,7 +23,7 @@ export default makeStyles(theme => ({
   },
   username: {
     padding: '8px',
-    textAlign: 'center',
+    justifyContent: 'space-between',
     color: '#00ADB5',
     display: 'flex  ',
     alignItems: 'center',
@@ -56,9 +56,15 @@ export default makeStyles(theme => ({
     fontSize: '18px',
     [theme.breakpoints.down('sm')]: {
       fontSize: '12px',
+      flexGrow: 1,
     },
   },
   login: {
     padding: '10px',
+  },
+  mobileMenuContainer: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
   },
 }));
