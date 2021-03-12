@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import IconButton from '@material-ui/core/IconButton';
-import TranslateIcon from '@material-ui/icons/Translate';
 import Favorite from '@material-ui/icons/Favorite';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
@@ -12,8 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useSelector } from 'react-redux';
 import LoginModal from '../Auth/LoginModal';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
-import { useLanguage } from '../../i18n/LanguageProvider';
-import { localList } from '../../i18n/locales';
+import LanguageSelector from '../Internationalization/LanguageSelector';
 
 const useStyles = makeStyles(theme => ({
   sectionDesktop: {
@@ -27,27 +25,13 @@ const useStyles = makeStyles(theme => ({
 function DesktopMenu() {
   const classes = useStyles();
   const totalCartItems = useSelector(state => state.cartReducer.totalCartItems);
-
-  const { setLocale: setLanguage, locale } = useLanguage();
   const { isInitialized, isSignedIn, signOut, googleUser } = useGoogleAuth();
-
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const [languageSelectAnchorEl, setLanguageSelectAnchorEl] = useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
-  const isLanguageMenuOpen = Boolean(languageSelectAnchorEl);
 
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleLanguageMenuOpen = event => {
-    setLanguageSelectAnchorEl(event.currentTarget);
-  };
-
-  const handleLanguageMenuClose = () => {
-    setLanguageSelectAnchorEl(null);
   };
 
   const handleMenuClose = () => {
@@ -57,11 +41,6 @@ function DesktopMenu() {
   const handleLogout = () => {
     signOut();
     handleMenuClose();
-  };
-
-  const selectLanguage = local => {
-    setLanguage(local);
-    handleLanguageMenuClose();
   };
 
   const menuId = 'primary-search-account-menu';
@@ -79,27 +58,6 @@ function DesktopMenu() {
     </Menu>
   );
 
-  const languageMenuId = 'language-menu';
-  const renderLanguageMenu = (
-    <Menu
-      anchorEl={languageSelectAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={languageMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isLanguageMenuOpen}
-      onClose={handleLanguageMenuClose}
-    >
-      {localList.map(item => {
-        return (
-          <MenuItem key={Math.random()} onClick={() => selectLanguage(item)}>
-            {item.languageName}
-          </MenuItem>
-        );
-      })}
-    </Menu>
-  );
-
   return (
     <div className={classes.sectionDesktop}>
       {!isInitialized || !isSignedIn ? <LoginModal loading={isInitialized} /> : null}
@@ -114,16 +72,7 @@ function DesktopMenu() {
         </>
       ) : null}
 
-      <Button
-        aria-label="show languages"
-        aria-controls={languageMenuId}
-        aria-haspopup="true"
-        onClick={handleLanguageMenuOpen}
-        startIcon={<TranslateIcon />}
-        endIcon={<ExpandMoreIcon />}
-      >
-        {locale.languageName}
-      </Button>
+      <LanguageSelector />
 
       <IconButton aria-label="show 4 new mails" color="inherit">
         <Badge badgeContent={totalCartItems} color="primary">
@@ -132,7 +81,6 @@ function DesktopMenu() {
       </IconButton>
 
       {renderMenu}
-      {renderLanguageMenu}
     </div>
   );
 }
