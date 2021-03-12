@@ -4,8 +4,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import IconButton from '@material-ui/core/IconButton';
 import Favorite from '@material-ui/icons/Favorite';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import Badge from '@material-ui/core/Badge';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import LoginModal from '../Auth/LoginModal';
@@ -71,12 +69,6 @@ function DesktopMenu() {
       ) : null}
 
       <LanguageSelector />
-
-      <IconButton aria-label="show 4 new mails" color="inherit">
-        <Badge badgeContent={4} color="primary">
-          <ShoppingCart />
-        </Badge>
-      </IconButton>
 
       {renderMenu}
     </div>

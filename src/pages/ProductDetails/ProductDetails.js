@@ -3,43 +3,63 @@ import { Button, Container, Grid, Paper } from '@material-ui/core';
 import { ShoppingBasket, Star } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
-import Loader from '../../components/Loader/Loader';
-import QuantityContainer from '../../components/QuantityContainer/QuantityContainer';
+import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
+import findIndex from 'lodash/findIndex';
+import { useHistory } from 'react-router-dom';
 import SimilarProducts from '../../components/SimilarProducts/SimilarProducts';
 import SizeContainer from '../../components/SizeContainer/SizeContainer';
 import products from '../../data/products';
 import useStyles from './ProductDetailsStyles';
 import fuseSearch from '../../components/Search/FuseSearch';
+import { addProductToCart } from '../../redux/actions/cart';
 
 const ProductDetails = props => {
+  const { match, addToCart, cart } = props;
+
   const classes = useStyles();
+  const history = useHistory();
   const [productDetails, setProductDetails] = useState({});
-  const { gallery, description, title, reviews, sizes, price, category } = productDetails;
-  const [currentSize, setCurrentSize] = useState();
-  const { match } = props;
+  const [isAlreadyInCart, setIsAlreadyInCart] = useState(false);
+
+  const { gallery, description, title, reviews, sizes = [], price, category } = productDetails;
+  const [currentSize, setCurrentSize] = useState(sizes[0] || 'XS');
   const productID = match.params.id;
-  const [isLoading, setIsLoading] = useState(false);
-  const fakeLoader = async () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  };
 
   const fetchProductDetails = () => {
-    const details = products.find(({ id }) => id === props.match.params.id);
+    const details = products.find(({ id: itemID }) => itemID === props.match.params.id);
     setProductDetails(details);
   };
 
   useEffect(() => {
-    fakeLoader();
     fetchProductDetails();
   }, [productID]);
+
+  useEffect(() => {
+    const index = findIndex(cart, product =>
+      isEqual(product, { ...productDetails, currentSize, quantity: product.quantity })
+    );
+
+    if (index > -1) {
+      setIsAlreadyInCart(true);
+    } else {
+      setIsAlreadyInCart(false);
+    }
+  }, [productDetails, currentSize, cart]);
 
   const getSimilarProducts = () => {
     return fuseSearch(['category'])
       .search(category)
       .map(({ item }) => item);
+  };
+
+  const addItemToCart = () => {
+    const productToCart = {
+      ...productDetails,
+      currentSize,
+      quantity: 1,
+    };
+    addToCart(productToCart);
   };
 
   return productDetails.title ? (
@@ -84,21 +104,7 @@ const ProductDetails = props => {
                     </b>
                   </Grid>
                   <Grid item xs={9} md="auto">
-                    <SizeContainer
-                      value={currentSize}
-                      sizes={sizes}
-                      onClick={sizeValue => setCurrentSize(sizeValue)}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container className={classes.quantity} justify="flex-start">
-                  <Grid item xs={3} md="auto">
-                    <b>
-                      <FormattedMessage id="quantity" />
-                    </b>
-                  </Grid>
-                  <Grid item xs={9} md="auto">
-                    <QuantityContainer />
+                    <SizeContainer value={currentSize} sizes={sizes} onClick={setCurrentSize} />
                   </Grid>
                 </Grid>
                 <Grid container spacing={3} justify="flex-start">
@@ -108,16 +114,32 @@ const ProductDetails = props => {
                     </Button>
                   </Grid>
                   <Grid item xs={12} md="auto">
-                    <Button variant="outlined" color="secondary" className={classes.actionBtn}>
-                      <ShoppingBasket className={classes.addToCart} />{' '}
-                      <FormattedMessage id="addToCart" />
-                    </Button>
+                    {isAlreadyInCart ? (
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        className={classes.actionBtn}
+                        onClick={() => history.push('/cart')}
+                      >
+                        <ShoppingBasket className={classes.addToCart} />{' '}
+                        <FormattedMessage id="goToCart" />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        className={classes.actionBtn}
+                        onClick={addItemToCart}
+                      >
+                        <ShoppingBasket className={classes.addToCart} />{' '}
+                        <FormattedMessage id="addToCart" />
+                      </Button>
+                    )}
                   </Grid>
                 </Grid>
               </div>
             </Paper>
           </Grid>
-          <Loader isLoading={isLoading} />
         </Grid>
       </Container>
       <Container maxWidth="lg">
@@ -133,4 +155,12 @@ const ProductDetails = props => {
   );
 };
 
-export default ProductDetails;
+const mapDispatchToProps = {
+  addToCart: addProductToCart,
+};
+
+const mapStateToProps = state => ({
+  cart: state.cartReducer,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

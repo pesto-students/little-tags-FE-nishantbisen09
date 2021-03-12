@@ -89,6 +89,7 @@ function Search() {
                 {searchResults.length ? (
                   searchResults.map(result => (
                     <ListItem
+                      key={result.item.title}
                       button
                       onClick={() =>
                         handleRoute({

@@ -4,16 +4,21 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+import IconButton from '@material-ui/core/IconButton';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Badge from '@material-ui/core/Badge';
+import { useSelector } from 'react-redux';
+
 import useStyles from './styles';
 import AppLogo from '../../assets/app-logo.png';
 import Search from '../Search/Search';
 import Sidebar from '../Sidebar/Sidebar';
-import MobileMenu from './MobileMenu';
 import DesktopMenu from './DesktopMenu';
 
 function Navbar() {
   const classes = useStyles();
   const history = useHistory();
+  const totalCartItems = useSelector(state => state.cartReducer.length);
 
   return (
     <div className={classes.grow}>
@@ -35,7 +40,12 @@ function Navbar() {
           <Search />
 
           <DesktopMenu />
-          <MobileMenu />
+
+          <IconButton aria-label="show 4 new mails" color="inherit">
+            <Badge badgeContent={totalCartItems} color="primary">
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

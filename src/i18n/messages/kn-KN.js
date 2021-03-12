@@ -23,5 +23,6 @@ export default {
     sortFilter: 'ವಿಂಗಡಣೆ ಬೆಲೆ',
     categories: 'ವಿಭಾಗಗಳು',
     similarProducts: 'ಇದೇ ರೀತಿಯ ಉತ್ಪನ್ನಗಳು',
+    goToCart: 'ಕಾರ್ಟ್‌ಗೆ ಹೋಗಿ',
   },
 };

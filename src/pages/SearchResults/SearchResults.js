@@ -4,11 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { Button, Hidden, makeStyles, Paper } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
-
 import { Tune } from '@material-ui/icons';
 import fuseSearch from '../../components/Search/FuseSearch';
 import Products from '../../components/Products/Products';
-import Loader from '../../components/Loader/Loader';
 import Filters from '../../components/Filters/Filters';
 import MobileFilterPopup from '../../components/MobileFilterPopup/MobileFilterPopup';
 import NoResultsFound from '../../components/NoResultsFound/NoResultsFound';
@@ -33,32 +31,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const initialState = {
+  params: '',
+  queryString: '',
+  filterConfig: {
+    priceRange: [0, 4000],
+    sortFilter: '',
+    categoriesFilter: [1, 2, 3],
+  },
+};
+
 function SearchResults() {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const classes = useStyles();
   const history = useHistory();
-  const initialState = {
-    params: '',
-    queryString: '',
-    filterConfig: {
-      priceRange: [0, 4000],
-      sortFilter: '',
-      categoriesFilter: [1, 2, 3],
-    },
-  };
-
   const [searchOptions, setSearchOptions] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
   const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-
-  const fakeLoader = async () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  };
 
   const convertStringsToNumbers = data => data.map(item => Number(item));
 
@@ -69,7 +59,6 @@ function SearchResults() {
         ? convertStringsToNumbers(params.get('pr').split('-'))
         : [0, 4000];
 
-    fakeLoader();
     setSearchOptions({
       ...searchOptions,
       queryString,
@@ -106,7 +95,6 @@ function SearchResults() {
   }, [searchOptions.filterConfig]);
 
   const onApplyFilterClick = filterConfiguration => {
-    fakeLoader();
     const { queryString } = searchOptions;
     const { priceRange } = filterConfiguration;
     const [fromPrice, toPrice] = priceRange;
@@ -176,7 +164,6 @@ function SearchResults() {
           </Grid>
         </Grid>
       </Container>
-      <Loader isLoading={isLoading} />
       <Hidden smUp>
         <MobileFilterPopup open={isMobileFilterOpen}>
           <Filters

@@ -68,7 +68,7 @@ const products = [
     sizes: ['XS', 'S', 'M'],
     category: 'Womens',
     categoryID: 1,
-    featured: false,
+    featured: true,
     price: {
       before_price: 0,
       currency: 'INR',
@@ -92,7 +92,7 @@ const products = [
     title: 'Embroidered Semi Stitched Lehenga Choli  (Pink, Blue)',
     description:
       'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
-    sizes: ['X', 'XS'],
+    sizes: ['XS', 'X'],
     category: "Women's Lehenga Cholis",
     categoryID: 1,
     featured: false,
@@ -170,7 +170,7 @@ const products = [
     title: 'Net Embroidered, Embellished Gown/Anarkali Kurta & Bottom Material  (Semi Stitched)',
     description:
       'surani brothers Fabric by Heavy Net Semi Stitched Round Neck Full Length Embroidered Gown,  surani brothers Fabric by Heavy Net Semi Stitched Round Neck Full Length Embroidered Gown',
-    sizes: ['X', 'XS', 'L'],
+    sizes: ['XS', 'X', 'L'],
     category: 'Womens Suits',
     categoryID: 1,
     featured: false,
