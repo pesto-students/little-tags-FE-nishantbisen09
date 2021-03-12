@@ -4,11 +4,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import IconButton from '@material-ui/core/IconButton';
 import Favorite from '@material-ui/icons/Favorite';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import Badge from '@material-ui/core/Badge';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useSelector } from 'react-redux';
 import LoginModal from '../Auth/LoginModal';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import LanguageSelector from '../Internationalization/LanguageSelector';
@@ -24,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 
 function DesktopMenu() {
   const classes = useStyles();
-  const totalCartItems = useSelector(state => state.cartReducer.totalCartItems);
   const { isInitialized, isSignedIn, signOut, googleUser } = useGoogleAuth();
   const [anchorEl, setAnchorEl] = useState(null);
 
