@@ -19,9 +19,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const QuantityContainer = () => {
+function QuantityContainer({ quantityState }) {
+  const { quantity, setQuantity } = quantityState;
   const classes = useStyles();
-  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className={classes.root}>
@@ -44,6 +44,6 @@ const QuantityContainer = () => {
       </Button>
     </div>
   );
-};
+}
 
 export default QuantityContainer;

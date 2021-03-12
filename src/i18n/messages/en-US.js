@@ -23,5 +23,6 @@ export default {
     sortFilter: 'Sort price',
     categories: 'Categories',
     similarProducts: 'Similar Products',
+    goToCart: 'Go To Cart',
   },
 };

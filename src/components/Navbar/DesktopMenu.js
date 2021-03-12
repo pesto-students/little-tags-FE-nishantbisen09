@@ -74,12 +74,6 @@ function DesktopMenu() {
 
       <LanguageSelector />
 
-      <IconButton aria-label="show 4 new mails" color="inherit">
-        <Badge badgeContent={totalCartItems} color="primary">
-          <ShoppingCart />
-        </Badge>
-      </IconButton>
-
       {renderMenu}
     </div>
   );
