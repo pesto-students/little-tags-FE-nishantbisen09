@@ -4,7 +4,6 @@ import { ShoppingBasket, Star } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
 import { connect } from 'react-redux';
-import Loader from '../../components/Loader/Loader';
 import QuantityContainer from '../../components/QuantityContainer/QuantityContainer';
 import SimilarProducts from '../../components/SimilarProducts/SimilarProducts';
 import SizeContainer from '../../components/SizeContainer/SizeContainer';
@@ -14,19 +13,14 @@ import fuseSearch from '../../components/Search/FuseSearch';
 import { addItemToCart } from '../../redux/actions/cart';
 
 const ProductDetails = props => {
+  const { match, addItemToCart: addCartItem } = props;
+
   const classes = useStyles();
   const [productDetails, setProductDetails] = useState({});
-  const { gallery, description, title, reviews, sizes, price, category, id } = productDetails;
   const [currentSize, setCurrentSize] = useState();
-  const { match, addItemToCart: addCartItem } = props;
+
+  const { gallery, description, title, reviews, sizes, price, category, id } = productDetails;
   const productID = match.params.id;
-  const [isLoading, setIsLoading] = useState(false);
-  const fakeLoader = async () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  };
 
   const fetchProductDetails = () => {
     const details = products.find(({ id: itemID }) => itemID === props.match.params.id);
@@ -34,7 +28,6 @@ const ProductDetails = props => {
   };
 
   useEffect(() => {
-    fakeLoader();
     fetchProductDetails();
   }, [productID]);
 
@@ -124,7 +117,6 @@ const ProductDetails = props => {
               </div>
             </Paper>
           </Grid>
-          <Loader isLoading={isLoading} />
         </Grid>
       </Container>
       <Container maxWidth="lg">
