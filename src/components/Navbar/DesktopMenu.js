@@ -6,9 +6,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Favorite from '@material-ui/icons/Favorite';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import LoginModal from '../Auth/LoginModal';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import LanguageSelector from '../Internationalization/LanguageSelector';
+import LoginModalOpener from '../Auth/LoginModalOpener';
 
 const useStyles = makeStyles(theme => ({
   sectionDesktop: {
@@ -56,7 +56,7 @@ function DesktopMenu() {
 
   return (
     <div className={classes.sectionDesktop}>
-      {!isInitialized || !isSignedIn ? <LoginModal loading={isInitialized} /> : null}
+      {!isInitialized || !isSignedIn ? <LoginModalOpener loading={isInitialized} /> : null}
       {isInitialized && isSignedIn ? (
         <>
           <Button endIcon={<ExpandMoreIcon />} onClick={handleProfileMenuOpen}>

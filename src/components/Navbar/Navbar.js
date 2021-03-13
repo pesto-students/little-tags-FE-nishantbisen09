@@ -14,6 +14,7 @@ import AppLogo from '../../assets/app-logo.png';
 import Search from '../Search/Search';
 import Sidebar from '../Sidebar/Sidebar';
 import DesktopMenu from './DesktopMenu';
+import LoginModal from '../Auth/LoginModal';
 
 function Navbar() {
   const classes = useStyles();
@@ -46,6 +47,7 @@ function Navbar() {
               <ShoppingCart />
             </Badge>
           </IconButton>
+          <LoginModal />
         </Toolbar>
       </AppBar>
     </div>

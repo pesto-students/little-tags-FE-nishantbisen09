@@ -13,9 +13,12 @@ import products from '../../data/products';
 import useStyles from './ProductDetailsStyles';
 import fuseSearch from '../../components/Search/FuseSearch';
 import { addProductToCart } from '../../redux/actions/cart';
+import { useGoogleAuth } from '../../components/Auth/GoogleAuthProvider';
+import { openLoginModal } from '../../redux/actions/loginModal';
 
 const ProductDetails = props => {
-  const { match, addToCart, cart } = props;
+  const { match, addToCart, cart, loginModalOpen } = props;
+  const { isSignedIn } = useGoogleAuth();
 
   const classes = useStyles();
   const history = useHistory();
@@ -54,12 +57,24 @@ const ProductDetails = props => {
   };
 
   const addItemToCart = () => {
+    if (!isSignedIn) {
+      loginModalOpen();
+      return;
+    }
+
     const productToCart = {
       ...productDetails,
       currentSize,
       quantity: 1,
     };
     addToCart(productToCart);
+  };
+
+  const handleBuy = () => {
+    addItemToCart();
+    if (isSignedIn) {
+      history.push('/cart');
+    }
   };
 
   return productDetails.title ? (
@@ -107,9 +122,15 @@ const ProductDetails = props => {
                     <SizeContainer value={currentSize} sizes={sizes} onClick={setCurrentSize} />
                   </Grid>
                 </Grid>
+
                 <Grid container spacing={3} justify="flex-start">
                   <Grid item xs={12} md="auto">
-                    <Button variant="contained" color="primary" className={classes.actionBtn}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className={classes.actionBtn}
+                      onClick={handleBuy}
+                    >
                       <FormattedMessage id="buyNow" />
                     </Button>
                   </Grid>
@@ -157,6 +178,7 @@ const ProductDetails = props => {
 
 const mapDispatchToProps = {
   addToCart: addProductToCart,
+  loginModalOpen: openLoginModal,
 };
 
 const mapStateToProps = state => ({
