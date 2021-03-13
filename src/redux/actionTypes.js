@@ -1,3 +1,8 @@
+// Cart
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY';
+
+// Login Modal
+export const OPEN_LOGIN_MODAL = 'OPEN_LOGIN_MODAL';
+export const CLOSE_LOGIN_MODAL = 'CLOSE_LOGIN_MODAL';

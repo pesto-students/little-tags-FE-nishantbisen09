@@ -3,7 +3,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Inbox from '@material-ui/icons/Inbox';
 import Mail from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
-
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -22,6 +21,7 @@ import logo from '../../assets/app-logo.png';
 import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import LoginModal from '../Auth/LoginModal';
 import LanguageSelector from '../Internationalization/LanguageSelector';
+import LoginModalOpener from '../Auth/LoginModalOpener';
 
 function Sidebar() {
   const classes = useStyles();
@@ -101,7 +101,12 @@ function Sidebar() {
           ) : (
             <>
               <div className={classes.login}>
-                {!isInitialized || !isSignedIn ? <LoginModal loading={isInitialized} /> : null}
+                {!isInitialized || !isSignedIn ? (
+                  <>
+                    <LoginModalOpener loading={isInitialized} />
+                    <LoginModal />
+                  </>
+                ) : null}
               </div>
             </>
           )}

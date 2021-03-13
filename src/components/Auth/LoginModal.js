@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import { Divider } from '@material-ui/core';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { FormattedMessage } from 'react-intl';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
+import { connect } from 'react-redux';
 import GoogleLoginButton from './GoogleLoginButton';
 import './login.css';
 import loginHeader from '../../assets/app-logo.png';
+import { closeLoginModal } from '../../redux/actions/loginModal';
+import { useGoogleAuth } from './GoogleAuthProvider';
 
 const useStyles = makeStyles(theme => ({
   dialogPaper: {
@@ -34,58 +35,53 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function LoginModal({ loading }) {
+function LoginModal({ loginModalState, loginModalClose }) {
   const classes = useStyles();
 
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const { isSignedIn } = useGoogleAuth();
 
   const handleClose = () => {
-    setOpen(false);
+    loginModalClose();
   };
 
-  return (
-    <>
-      <Button
-        startIcon={<LockOpenIcon />}
-        disabled={!loading}
-        variant="contained"
-        color="primary"
-        onClick={handleClickOpen}
-        className={classes.loginButton}
-      >
-        <FormattedMessage id="loginButtonText" />
-      </Button>
+  useEffect(() => {
+    handleClose();
+  }, [isSignedIn]);
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll="body"
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogContent className={classes.dialogPaper}>
-          <div className="login-container">
-            <div className="login-header-container">
-              <div className="login-header" style={{ backgroundImage: `url(${loginHeader})` }} />
-            </div>
-            <Divider />
-            <div className="login-btn">
-              <GoogleLoginButton />
-            </div>
+  return (
+    <Dialog
+      open={loginModalState.isOpen}
+      onClose={loginModalClose}
+      scroll="body"
+      aria-labelledby="scroll-dialog-title"
+      aria-describedby="scroll-dialog-description"
+    >
+      <DialogContent className={classes.dialogPaper}>
+        <div className="login-container">
+          <div className="login-header-container">
+            <div className="login-header" style={{ backgroundImage: `url(${loginHeader})` }} />
           </div>
-        </DialogContent>
-        <DialogActions className={classes.actions}>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
+          <Divider />
+          <div className="login-btn">
+            <GoogleLoginButton />
+          </div>
+        </div>
+      </DialogContent>
+      <DialogActions className={classes.actions}>
+        <Button onClick={handleClose} color="primary">
+          Cancel
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 
-export default LoginModal;
+const mapStateToProps = state => ({
+  loginModalState: state.loginModalReducer,
+});
+
+const mapDispatchToProps = {
+  loginModalClose: closeLoginModal,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
