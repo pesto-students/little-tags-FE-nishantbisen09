@@ -5,11 +5,12 @@ const useStyle = makeStyles(() => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#1B1642',
-    marginTop: 20,
+    marginTop: 50,
     color: 'white',
     left: 0,
     bottom: 0,
     width: '100%',
+    position: 'fixed',
   },
   footer: {
     padding: '15px',
