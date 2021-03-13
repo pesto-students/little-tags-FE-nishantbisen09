@@ -7,7 +7,6 @@ const useStyle = makeStyles(() => ({
     backgroundColor: '#1B1642',
     marginTop: 20,
     color: 'white',
-    position: 'fixed',
     left: 0,
     bottom: 0,
     width: '100%',
@@ -23,7 +22,7 @@ const Footer = () => {
   return (
     <Grid className={classes.root} container justify="space-between" alignItems="center">
       <Grid item className={classes.footer}>
-        &copy; {new Date().getFullYear()}, Little Tags
+        &copy; {new Date().getFullYear()}, Femgame
       </Grid>
       <Grid item className={classes.footer}>
         All Rights Reserved

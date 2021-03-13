@@ -1,5 +1,7 @@
+import React from 'react';
 import { Button, makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { updateProductQuantity } from '../../redux/actions/cart';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,17 +21,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function QuantityContainer({ quantityState }) {
-  const { quantity, setQuantity } = quantityState;
+function QuantityContainer({ product, productQuantityUpdate, classNames }) {
+  const { quantity } = product;
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${classNames}`}>
       <Button
         variant="contained"
         color="primary"
         className={classes.actionBtn}
-        onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+        onClick={() => quantity > 1 && productQuantityUpdate(product, quantity - 1)}
       >
         -
       </Button>
@@ -38,12 +40,19 @@ function QuantityContainer({ quantityState }) {
         variant="contained"
         color="primary"
         className={classes.actionBtn}
-        onClick={() => setQuantity(quantity + 1)}
+        onClick={() => productQuantityUpdate(product, quantity + 1)}
       >
         +
       </Button>
     </div>
   );
 }
+const mapDispatchToProps = {
+  productQuantityUpdate: updateProductQuantity,
+};
 
-export default QuantityContainer;
+const mapStateToProps = state => ({
+  cart: state.cartReducer,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuantityContainer);
