@@ -10,6 +10,7 @@ import BillSummary from '../../components/Cart/BillSummary';
 const useStyles = makeStyles(() => ({
   container: {
     marginTop: '20px',
+    marginBottom: '70px',
   },
 
   columnTitle: {
