@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import SearchResults from './pages/SearchResults/SearchResults';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
+import CartPage from './pages/Cart/CartPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/search" component={SearchResults} />
           <Route path="/product-detail/:id" component={ProductDetails} />
+          <Route path="/cart" component={CartPage} />
         </Switch>
         <Footer />
       </BrowserRouter>

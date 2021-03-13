@@ -6,3 +6,6 @@ export const addProductToCart = productToAdd => dispatch => {
 
 export const updateProductQuantity = (productToUpdate, newQuantity) => dispatch =>
   dispatch({ type: actionTypes.UPDATE_ITEM_QUANTITY, productToUpdate, newQuantity });
+
+export const removeProductFromCart = productToRemove => dispatch =>
+  dispatch({ type: actionTypes.REMOVE_ITEM_FROM_CART, productToRemove });

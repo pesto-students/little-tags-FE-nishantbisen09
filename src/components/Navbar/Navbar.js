@@ -42,7 +42,11 @@ function Navbar() {
 
           <DesktopMenu />
 
-          <IconButton aria-label="show 4 new mails" color="inherit">
+          <IconButton
+            aria-label={`${totalCartItems} item(s) in your cart`}
+            color="inherit"
+            onClick={() => history.push('/cart')}
+          >
             <Badge badgeContent={totalCartItems} color="primary">
               <ShoppingCart />
             </Badge>

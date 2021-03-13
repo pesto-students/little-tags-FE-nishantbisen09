@@ -108,3 +108,11 @@ body {
   justify-content: center;
   padding: 20px 0;
 }
+
+.lightGreen {
+  color: rgb(0, 160, 8);
+}
+
+.bold {
+  font-weight: 700;
+}
