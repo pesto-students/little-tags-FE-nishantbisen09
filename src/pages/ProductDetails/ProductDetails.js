@@ -140,7 +140,7 @@ const ProductDetails = props => {
                         variant="outlined"
                         color="secondary"
                         className={classes.actionBtn}
-                        onClick={() => history.push('/cart')}
+                        onClick={() => history.push('/checkout')}
                       >
                         <ShoppingBasket className={classes.addToCart} />{' '}
                         <FormattedMessage id="goToCart" />
