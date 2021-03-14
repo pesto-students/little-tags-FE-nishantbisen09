@@ -1,7 +1,6 @@
 import React from 'react';
 
-const CategoryCard = ({ category }) => {
-  const { name, image } = category;
+const CategoryCard = ({ name, image }) => {
   return (
     <div className="category-card-container">
       <div className="card-image" style={{ backgroundImage: `url(${image})` }} />

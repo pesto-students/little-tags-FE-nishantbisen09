@@ -10,6 +10,7 @@ import Products from '../../components/Products/Products';
 import Filters from '../../components/Filters/Filters';
 import MobileFilterPopup from '../../components/MobileFilterPopup/MobileFilterPopup';
 import NoResultsFound from '../../components/NoResultsFound/NoResultsFound';
+import products from '../../data/products';
 
 const useStyles = makeStyles(theme => ({
   heading: {
@@ -58,12 +59,17 @@ function SearchResults() {
       typeof params.get('pr') === 'string'
         ? convertStringsToNumbers(params.get('pr').split('-'))
         : [0, 4000];
+    const categories =
+      typeof params.get('c') === 'string'
+        ? convertStringsToNumbers(params.get('c').split(','))
+        : [1, 2, 3];
 
     setSearchOptions({
       ...searchOptions,
       queryString,
       filterConfig: {
         ...searchOptions.filterConfig,
+        categoriesFilter: categories,
         priceRange,
       },
     });
@@ -75,31 +81,43 @@ function SearchResults() {
       typeof params.get('pr') === 'string'
         ? convertStringsToNumbers(params.get('pr').split('-'))
         : [0, 4000];
+    const categories =
+      typeof params.get('c') === 'string'
+        ? convertStringsToNumbers(params.get('c').split(','))
+        : [1, 2, 3];
     const getFuzzySearchedItems = () => {
-      const items = fuseSearch(['title', 'description', 'category'])
-        .search(queryString)
-        .slice(0, 30);
-      return items.map(item => item.item);
+      if (queryString)
+        return fuseSearch(['title', 'description', 'category'])
+          .search(queryString)
+          .slice(0, 30)
+          .map(item => item.item);
+      return products;
     };
-    const { categoriesFilter } = searchOptions.filterConfig;
-    const applyFilters = products => {
+
+    const applyFilters = productItems => {
       const [fromPrice, toPrice] = priceRange;
-      return products.filter(
+      return productItems.filter(
         ({ price, categoryID }) =>
           price.current_price >= fromPrice &&
           price.current_price <= toPrice &&
-          categoriesFilter.indexOf(categoryID) > -1
+          categories.indexOf(categoryID) > -1
       );
     };
     setSearchResults(applyFilters(getFuzzySearchedItems()));
   }, [searchOptions.filterConfig]);
 
+  const getCategoryQuery = categories => {
+    return categories.join(',');
+  };
+
   const onApplyFilterClick = filterConfiguration => {
     const { queryString } = searchOptions;
-    const { priceRange } = filterConfiguration;
+    const { priceRange, categoriesFilter } = filterConfiguration;
     const [fromPrice, toPrice] = priceRange;
     setMobileFilterOpen(false);
-    history.push(`/search?q=${queryString}&pr=${fromPrice}-${toPrice}`);
+    history.push(
+      `/search?q=${queryString}&pr=${fromPrice}-${toPrice}&c=${getCategoryQuery(categoriesFilter)}`
+    );
     setSearchOptions({ ...searchOptions, filterConfig: filterConfiguration });
   };
 
@@ -125,7 +143,7 @@ function SearchResults() {
       </div>
 
       <h2 className={classes.heading}>
-        {searchResults.length ? (
+        {searchResults.length && params.get('q') ? (
           <>
             <FormattedMessage id="searchResultsFor" />{' '}
             <span>&quot;{searchOptions.queryString}&quot;</span>

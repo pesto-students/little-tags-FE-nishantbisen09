@@ -71,7 +71,7 @@ const Filters = ({ onApplyFilterClick, filterConfig }) => {
   });
   useEffect(() => {
     setFilterConfiguration(filterConfig);
-  }, []);
+  }, [filterConfig]);
 
   const handlePriceSortChange = event => {
     setFilterConfiguration({ ...filterConfiguration, sortFilter: event.target.value });

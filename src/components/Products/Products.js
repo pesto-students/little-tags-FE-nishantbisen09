@@ -21,7 +21,7 @@ const Products = ({ products, heading, position, className, spacing }) => {
     <div className={className}>
       {heading && <h3 className="featured-products-header">{heading}</h3>}
       <Grid container className={classes.root} justify={position} spacing={spacing}>
-        {products.map(({ gallery, price, title, ratingCount, id }) => {
+        {products.map(({ gallery, price, title, id }) => {
           return (
             <Grid key={id} item>
               <Product
@@ -30,9 +30,7 @@ const Products = ({ products, heading, position, className, spacing }) => {
                 image={gallery[0]} // this will be removed after implementing image slider here
                 price={price.current_price}
                 name={title}
-                ratingCount={ratingCount}
                 onClick={onProductCardClick}
-                showAddToCartButton
               />
             </Grid>
           );

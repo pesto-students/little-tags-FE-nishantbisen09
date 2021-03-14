@@ -66,7 +66,6 @@ const SimilarProducts = ({ products = [] }) => {
                 name={title}
                 ratingCount={ratingCount}
                 onClick={onProductCardClick}
-                showAddToCartButton={false}
               />
             </div>
           );
