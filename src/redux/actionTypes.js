@@ -6,3 +6,8 @@ export const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY';
 // Login Modal
 export const OPEN_LOGIN_MODAL = 'OPEN_LOGIN_MODAL';
 export const CLOSE_LOGIN_MODAL = 'CLOSE_LOGIN_MODAL';
+
+// Address
+export const ADD_ADDRESS = 'ADD_ADDRESS';
+export const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
+export const DELETE_ADDRESS = 'DELETE_ADDRESS';

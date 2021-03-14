@@ -27,7 +27,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Product = ({ id, image, price, currency, name, ratingCount, onClick }) => {
+const Product = ({
+  id,
+  image,
+  price,
+  currency,
+  name,
+  ratingCount,
+  onClick,
+  showAddToCartButton,
+}) => {
   const classes = useStyles();
   return (
     <Card className={`${classes.root} product-card`} elevation={2} onClick={() => onClick(id)}>
@@ -43,14 +52,18 @@ const Product = ({ id, image, price, currency, name, ratingCount, onClick }) => 
             </span>
           </Grid>
           <Grid item>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={event => event.stopPropagation()}
-            >
-              <FormattedMessage id="addToCart" />
-            </Button>
+            {showAddToCartButton ? (
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={event => event.stopPropagation()}
+              >
+                <FormattedMessage id="addToCart" />
+              </Button>
+            ) : (
+              <></>
+            )}
           </Grid>
         </Grid>
       </CardContent>

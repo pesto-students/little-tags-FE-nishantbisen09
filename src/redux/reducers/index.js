@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import cartReducer from './cart';
-import loginModalReducer from './loginModal';
+import cart from './cart';
+import loginModal from './loginModal';
+import address from './address';
 
-export default combineReducers({ cartReducer, loginModalReducer });
+export default combineReducers({ cart, loginModal, address });

@@ -53,7 +53,8 @@ const ProductDetails = props => {
   const getSimilarProducts = () => {
     return fuseSearch(['category'])
       .search(category)
-      .map(({ item }) => item);
+      .map(({ item }) => item)
+      .filter(({ id }) => id !== productID);
   };
 
   const addItemToCart = () => {
@@ -182,7 +183,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-  cart: state.cartReducer,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
