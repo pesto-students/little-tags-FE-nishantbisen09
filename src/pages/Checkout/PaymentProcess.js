@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -21,13 +21,25 @@ function PaymentProcess({ cart }) {
   const { googleUser } = useGoogleAuth();
   const history = useHistory();
 
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const onPaymentCompletion = response => {
     console.log(response);
     // TODO:
     // Add cart items to orders(redux)
     // Clear cart
     // Redirect to orders page
+    setIsProcessing(false);
     history.push('/orders');
+  };
+
+  const onRazorpayModalClose = () => {
+    setIsProcessing(false);
+  };
+
+  const startPaymentProcess = () => {
+    setIsProcessing(true);
+    payWithRazorPay(cart, googleUser, onPaymentCompletion, onRazorpayModalClose);
   };
 
   return (
@@ -43,12 +55,13 @@ function PaymentProcess({ cart }) {
       <br />
       <Button
         className={classes.paymentButton}
+        disabled={isProcessing}
         size="large"
         variant="contained"
         color="primary"
-        onClick={() => payWithRazorPay(cart, googleUser, onPaymentCompletion)}
+        onClick={startPaymentProcess}
       >
-        Proceed to Pay
+        {isProcessing ? 'Please wait..' : 'Proceed to Pay'}
       </Button>
     </div>
   );

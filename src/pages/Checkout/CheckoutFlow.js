@@ -5,8 +5,6 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import { Divider } from '@material-ui/core';
 import { connect, useSelector } from 'react-redux';
 import SelectAddress from '../../components/SelectAddress/SelectAddress';
@@ -73,9 +71,6 @@ function CheckoutFlow({ cart }) {
     setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
   return (
     <>
       <Stepper className={classes.root} activeStep={activeStep} orientation="vertical">
@@ -113,14 +108,6 @@ function CheckoutFlow({ cart }) {
           </Step>
         ))}
       </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
-            Reset
-          </Button>
-        </Paper>
-      )}
     </>
   );
 }

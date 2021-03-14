@@ -4,7 +4,7 @@ import loadScript from './loadScript';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_API_PATH;
 
-export default async function payWithRazorPay(cart, user, callback) {
+export default async function payWithRazorPay(cart, user, onSuccessCallback, onRazorpayModalClose) {
   const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
 
   const orderDetails = getPayableAmount(cart);
@@ -43,7 +43,7 @@ export default async function payWithRazorPay(cart, user, callback) {
 
       const paymentResult = await axios.post(`${BACKEND_URL}/success`, data);
 
-      callback(paymentResult.data);
+      onSuccessCallback(paymentResult.data);
     },
 
     prefill: {
@@ -57,8 +57,12 @@ export default async function payWithRazorPay(cart, user, callback) {
     theme: {
       color: '#3f51b5',
     },
+    modal: {
+      ondismiss: onRazorpayModalClose,
+    },
   };
 
   const paymentObject = new window.Razorpay(options);
+
   paymentObject.open();
 }
