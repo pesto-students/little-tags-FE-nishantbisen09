@@ -7,17 +7,26 @@ import './similarProducts.css';
 
 const sliderSettings = {
   className: 'similar-products',
-  dots: true,
+  dots: false,
   infinite: false,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 3.6,
   slidesToScroll: 3,
   initialSlide: 0,
   responsive: [
     {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3.1,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 3.0,
         slidesToScroll: 3,
         infinite: true,
         dots: true,
@@ -26,7 +35,23 @@ const sliderSettings = {
     {
       breakpoint: 1000,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 2.5,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 830,
+      settings: {
+        slidesToShow: 2.1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 1.5,
         slidesToScroll: 2,
         initialSlide: 2,
       },
@@ -34,8 +59,10 @@ const sliderSettings = {
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        arrows: false,
+        slidesToShow: 1.3,
         slidesToScroll: 1,
+        dots: false,
       },
     },
   ],
@@ -47,12 +74,11 @@ const SimilarProducts = ({ products = [] }) => {
     history.push(`/product-detail/${id}`);
   };
   return (
-    <div>
-      <div>
-        <h3 className="similar-products-header">
-          <FormattedMessage id="similarProducts" />
-        </h3>
-      </div>
+    <>
+      <h3 className="similar-products-header">
+        <FormattedMessage id="similarProducts" />
+      </h3>
+
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Slider {...sliderSettings}>
         {products.map(({ gallery, price, title, ratingCount, id }) => {
@@ -71,7 +97,7 @@ const SimilarProducts = ({ products = [] }) => {
           );
         })}
       </Slider>
-    </div>
+    </>
   );
 };
 
