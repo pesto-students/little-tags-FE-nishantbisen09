@@ -10,14 +10,14 @@ export default async function payWithRazorPay(cart, user, onSuccessCallback, onR
   const orderDetails = getPayableAmount(cart);
 
   if (!res) {
-    console.error('Razorpay SDK failed to load. Are you online?');
+    console.error('Razorpay SDK failed to load. Are you online?'); // eslint-disable-line no-console
     return;
   }
 
   const result = await axios.post(`${BACKEND_URL}/orders`, orderDetails);
 
   if (!result) {
-    console.error('Server error. Are you online?');
+    console.error('Server error. Are you online?'); // eslint-disable-line no-console
     return;
   }
 

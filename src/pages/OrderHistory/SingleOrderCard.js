@@ -65,8 +65,9 @@ const useStyles = makeStyles(theme => ({
 function SingleOrderCard({ order }) {
   const classes = useStyles();
 
+  // eslint-disable-next-line no-unused-vars
   const rateAndReview = currentOrder => {
-    console.info(currentOrder, 'currentOrder');
+    console.info(currentOrder, 'currentOrder'); // eslint-disable-line no-console
   };
 
   return (
