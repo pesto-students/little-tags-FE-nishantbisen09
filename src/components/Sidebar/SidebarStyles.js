@@ -67,4 +67,11 @@ export default makeStyles(theme => ({
     position: 'absolute',
     bottom: 0,
   },
+  categoryImage: {
+    marginRight: '20px',
+    height: '20px',
+    width: '20px',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+  },
 }));

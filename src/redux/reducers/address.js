@@ -1,29 +1,32 @@
 import * as actionTypes from '../actionTypes';
 
-const initialState = [];
+const initialState = { address: [], currentAddress: '' };
 const address = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_ADDRESS:
-      return [...action.addresses];
+      return { ...state, address: action.addresses };
     case actionTypes.UPDATE_ADDRESS: {
-      const newState = state.map(addressData => {
+      const newAddresses = state.address.map(addressData => {
         if (addressData.id === action.payload.id)
           return { ...addressData, ...action.payload.address };
         return addressData;
       });
-      return newState;
+      return { ...state, address: newAddresses };
     }
     case actionTypes.DELETE_ADDRESS: {
-      const newState = state.filter(({ id }) => id !== action.id);
-      return newState;
+      const newAddresses = state.address.filter(({ id }) => id !== action.id);
+      return { ...state, address: newAddresses };
     }
     case actionTypes.SET_DEFAULT_ADDRESS: {
-      const newState = state.map(addressData => {
+      const newAddresses = state.address.map(addressData => {
         if (addressData.id === action.id) return { ...addressData, isDefault: true };
         return { ...addressData, isDefault: false };
       });
-      return newState;
+      return { ...state, address: newAddresses };
     }
+
+    case actionTypes.SET_CURRENT_ADDRESS:
+      return { ...state, currentAddress: action.id };
     default:
       return state;
   }

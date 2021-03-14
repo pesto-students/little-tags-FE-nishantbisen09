@@ -8,27 +8,27 @@ const topCategories = [
   {
     id: 1,
     name: "Men's Clothing",
-    imageUrl: mens,
+    image: mens,
   },
   {
     id: 2,
     name: "Women's Clothing",
-    imageUrl: womens,
+    image: womens,
   },
   {
     id: 3,
     name: 'Jewellery',
-    imageUrl: jewellery,
+    image: jewellery,
   },
   {
     id: 4,
     name: 'Electronics',
-    imageUrl: electronics,
+    image: electronics,
   },
   {
     id: 5,
     name: 'Accessories',
-    imageUrl: accessories,
+    image: accessories,
   },
 ];
 export default topCategories;
