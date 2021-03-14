@@ -27,15 +27,11 @@ function PaymentProcess({ cart, loginModalOpen, addOrders, emptyCart }) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const onPaymentCompletion = () => {
-    // Add cart items to orders(redux)
     addOrders(cart);
-
-    // Clear cart
     emptyCart();
 
     setIsProcessing(false);
 
-    // Redirect to orders page
     history.push('/orders');
   };
 
@@ -44,14 +40,12 @@ function PaymentProcess({ cart, loginModalOpen, addOrders, emptyCart }) {
   };
 
   const startPaymentProcess = () => {
-    onPaymentCompletion();
-    //! UNTIL TESTING IS dONE - BELOW CODE IS IMPORTANT
-    // if (!isSignedIn) {
-    //   loginModalOpen();
-    //   return;
-    // }
-    // setIsProcessing(true);
-    // payWithRazorPay(cart, googleUser, onPaymentCompletion, onRazorpayModalClose);
+    if (!isSignedIn) {
+      loginModalOpen();
+      return;
+    }
+    setIsProcessing(true);
+    payWithRazorPay(cart, googleUser, onPaymentCompletion, onRazorpayModalClose);
   };
 
   return (

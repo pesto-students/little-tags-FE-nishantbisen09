@@ -1,6 +1,3 @@
-import isEqual from 'lodash/isEqual';
-import findIndex from 'lodash/findIndex';
-
 import * as actionTypes from '../actionTypes';
 
 const initialState = [];

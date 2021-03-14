@@ -58,11 +58,10 @@ const ProductDetails = props => {
   };
 
   const addItemToCart = () => {
-    //! UNTIL TESTING IS dONE - BELOW CODE IS IMPORTANT
-    // if (!isSignedIn) {
-    //   loginModalOpen();
-    //   return;
-    // }
+    if (!isSignedIn) {
+      loginModalOpen();
+      return;
+    }
 
     const productToCart = {
       ...productDetails,
