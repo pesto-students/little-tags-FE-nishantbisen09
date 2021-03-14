@@ -41,7 +41,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-  cart: state.cartReducer,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuantityContainer);
