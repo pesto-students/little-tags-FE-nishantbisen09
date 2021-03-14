@@ -1,5 +1,10 @@
-import { Button, makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import RemoveCircleOutlineOutlinedIcon from '@material-ui/icons/RemoveCircleOutlineOutlined';
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import { connect } from 'react-redux';
+import IconButton from '@material-ui/core/IconButton';
+import { updateProductQuantity } from '../../redux/actions/cart';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -9,41 +14,34 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     marginLeft: '5px',
   },
-  actionBtn: {
-    borderRadius: '50%',
-    width: '40px',
-    height: '40px',
-    minWidth: 0,
-    border: '1px solid #0000001f',
-    margin: '0 5px',
-  },
 }));
 
-function QuantityContainer({ quantityState }) {
-  const { quantity, setQuantity } = quantityState;
+function QuantityContainer({ product, productQuantityUpdate, classNames }) {
+  const { quantity } = product;
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.actionBtn}
-        onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+    <div className={`${classes.root} ${classNames}`}>
+      <IconButton
+        aria-label="remove"
+        onClick={() => quantity > 1 && productQuantityUpdate(product, quantity - 1)}
       >
-        -
-      </Button>
+        <RemoveCircleOutlineOutlinedIcon />
+      </IconButton>
       <span className={classes.quantity}>{quantity}</span>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.actionBtn}
-        onClick={() => setQuantity(quantity + 1)}
-      >
-        +
-      </Button>
+
+      <IconButton aria-label="add" onClick={() => productQuantityUpdate(product, quantity + 1)}>
+        <AddCircleOutlineOutlinedIcon />
+      </IconButton>
     </div>
   );
 }
+const mapDispatchToProps = {
+  productQuantityUpdate: updateProductQuantity,
+};
 
-export default QuantityContainer;
+const mapStateToProps = state => ({
+  cart: state.cartReducer,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuantityContainer);
