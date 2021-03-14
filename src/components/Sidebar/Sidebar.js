@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Inbox from '@material-ui/icons/Inbox';
-import Mail from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -22,6 +20,7 @@ import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import LoginModal from '../Auth/LoginModal';
 import LanguageSelector from '../Internationalization/LanguageSelector';
 import LoginModalOpener from '../Auth/LoginModalOpener';
+import topCategories from '../../data/categories';
 
 function Sidebar() {
   const classes = useStyles();
@@ -51,15 +50,13 @@ function Sidebar() {
       <Divider />
       <h2 className={classes.menuHeader}>Categories</h2>
       <List>
-        {['Indian wear', 'Western wear', 'Jewellery', 'Accessories'].map((text, index) => (
-          <ListItem button key={text} className={classes.listItemStyle}>
-            {index % 2 === 0 ? (
-              <Inbox style={{ marginRight: '15px' }} />
-            ) : (
-              <Mail style={{ marginRight: '15px' }} />
-            )}
-            <ListItemText primary={text} />
-          </ListItem>
+        {topCategories.map(({ id, name, image }) => (
+          <>
+            <ListItem button key={id} className={classes.listItemStyle}>
+              <div style={{ backgroundImage: `url(${image})` }} className={classes.categoryImage} />
+              <ListItemText primary={name} />
+            </ListItem>
+          </>
         ))}
       </List>
       <Hidden smUp>

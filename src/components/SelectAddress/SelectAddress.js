@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   FormControl,
@@ -17,6 +17,7 @@ import {
   updateAddress,
   deleteAddress,
   setDefaultAddress,
+  setCurrentAddress,
 } from '../../redux/actions/address';
 
 const useStyles = makeStyles(() => ({
@@ -52,22 +53,17 @@ const SelectAddress = ({
   updateAddress: updateAddressData,
   deleteAddress: deleteAddressData,
   setDefaultAddress: setDefaultAddressData,
+  currentAddress,
+  setCurrentAddress: setCurrentAddressData,
 }) => {
   const classes = useStyles();
-  const [currentAddress, setCurrentAddress] = useState(1);
   const [addressUnderModification, setAddressUnderModification] = useState();
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
 
-  useEffect(() => {
-    if (addresses.length === 1) {
-      setCurrentAddress(addresses[0]?.id);
-    }
-  }, [addresses]);
-
   const handleChange = event => {
     if (isEditMode) return;
-    setCurrentAddress(event.target.value);
+    setCurrentAddressData(event.target.value);
   };
 
   const onAddressSaveClick = (address, isDefaultAddressChanged) => {
@@ -78,7 +74,7 @@ const SelectAddress = ({
       addNewAddress([...addresses, address]);
       if (isDefaultAddressChanged) setDefaultAddressData(address.id);
     }
-
+    if (!currentAddress) setCurrentAddressData(address.id);
     setIsAddressModalOpen(false);
     setIsEditMode(false);
   };
@@ -172,7 +168,8 @@ const SelectAddress = ({
 };
 
 const mapStateToProps = state => ({
-  addresses: state.address,
+  addresses: state.address.address,
+  currentAddress: state.address.currentAddress,
 });
 
 export default connect(mapStateToProps, {
@@ -180,4 +177,5 @@ export default connect(mapStateToProps, {
   updateAddress,
   deleteAddress,
   setDefaultAddress,
+  setCurrentAddress,
 })(SelectAddress);

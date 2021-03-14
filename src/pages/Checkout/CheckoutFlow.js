@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -35,8 +35,8 @@ const steps = ['Shopping Cart', 'Select Delivery Address', 'Select Payment Metho
 
 function CheckoutFlow({ cart }) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const addressesCount = useSelector(state => state.address.length);
+  const [activeStep, setActiveStep] = useState(0);
+  const addressesCount = useSelector(state => state.address.address.length);
 
   function getStepContent(step) {
     switch (step) {

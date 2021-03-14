@@ -16,3 +16,7 @@ export const deleteAddress = id => dispatch => {
 export const setDefaultAddress = id => dispatch => {
   dispatch({ type: actionTypes.SET_DEFAULT_ADDRESS, id });
 };
+
+export const setCurrentAddress = id => dispatch => {
+  dispatch({ type: actionTypes.SET_CURRENT_ADDRESS, id });
+};
