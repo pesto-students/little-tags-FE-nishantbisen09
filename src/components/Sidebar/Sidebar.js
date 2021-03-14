@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Inbox from '@material-ui/icons/Inbox';
-import Mail from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useHistory } from 'react-router-dom';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {
   Divider,
@@ -22,6 +21,7 @@ import { useGoogleAuth } from '../Auth/GoogleAuthProvider';
 import LoginModal from '../Auth/LoginModal';
 import LanguageSelector from '../Internationalization/LanguageSelector';
 import LoginModalOpener from '../Auth/LoginModalOpener';
+import topCategories from '../../data/categories';
 
 function Sidebar() {
   const classes = useStyles();
@@ -30,6 +30,7 @@ function Sidebar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const ITEM_HEIGHT = 48;
+  const history = useHistory();
 
   const onDotMenuClick = event => {
     setAnchorEl(event.currentTarget);
@@ -43,6 +44,11 @@ function Sidebar() {
     onDotMenuCLose();
   };
 
+  const onCategoryClick = url => {
+    history.push(url);
+    toggleSideBar(false);
+  };
+
   const menu = () => (
     <div className={classes.list}>
       <div className={classes.sidebarLogoContainer}>
@@ -51,14 +57,15 @@ function Sidebar() {
       <Divider />
       <h2 className={classes.menuHeader}>Categories</h2>
       <List>
-        {['Indian wear', 'Western wear', 'Jewellery', 'Accessories'].map((text, index) => (
-          <ListItem button key={text} className={classes.listItemStyle}>
-            {index % 2 === 0 ? (
-              <Inbox style={{ marginRight: '15px' }} />
-            ) : (
-              <Mail style={{ marginRight: '15px' }} />
-            )}
-            <ListItemText primary={text} />
+        {topCategories.map(({ id, name, image, url }) => (
+          <ListItem
+            button
+            key={id}
+            className={classes.listItemStyle}
+            onClick={() => onCategoryClick(url)}
+          >
+            <div style={{ backgroundImage: `url(${image})` }} className={classes.categoryImage} />
+            <ListItemText primary={name} />
           </ListItem>
         ))}
       </List>

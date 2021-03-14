@@ -47,7 +47,7 @@ function Search() {
     e.preventDefault();
     if (!isSearchInputValid(searchQuery)) return;
     setIsSearchContainerOpen(false);
-    history.push(`/search?q=${searchQuery}`);
+    history.push(`/search?q=${searchQuery}&c=1,2,3`);
   };
 
   const handleRoute = to => {
