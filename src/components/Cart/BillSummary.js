@@ -107,7 +107,7 @@ function BillSummary({ cart }) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cartReducer,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, null)(BillSummary);

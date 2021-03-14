@@ -12,7 +12,12 @@ import {
 import { AddCircle, Delete, Edit } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import AddEditAddressModal from './AddEditAddressModal';
-import { addAddress, updateAddress, deleteAddress } from '../../redux/actions/address';
+import {
+  addAddress,
+  updateAddress,
+  deleteAddress,
+  setDefaultAddress,
+} from '../../redux/actions/address';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -46,6 +51,7 @@ const SelectAddress = ({
   addAddress: addNewAddress,
   updateAddress: updateAddressData,
   deleteAddress: deleteAddressData,
+  setDefaultAddress: setDefaultAddressData,
 }) => {
   const classes = useStyles();
   const [currentAddress, setCurrentAddress] = useState(1);
@@ -64,12 +70,15 @@ const SelectAddress = ({
     setCurrentAddress(event.target.value);
   };
 
-  const onAddressSaveClick = address => {
+  const onAddressSaveClick = (address, isDefaultAddressChanged) => {
     if (isEditMode) {
       updateAddressData({ id: addressUnderModification, address });
+      if (isDefaultAddressChanged) setDefaultAddressData(addressUnderModification);
     } else {
       addNewAddress([...addresses, address]);
+      if (isDefaultAddressChanged) setDefaultAddressData(address.id);
     }
+
     setIsAddressModalOpen(false);
     setIsEditMode(false);
   };
@@ -83,6 +92,7 @@ const SelectAddress = ({
   const onCancelClick = () => {
     setIsAddressModalOpen(false);
     setIsEditMode(false);
+    setAddressUnderModification(null);
   };
 
   return (
@@ -103,7 +113,7 @@ const SelectAddress = ({
                     value={id}
                     control={<Radio color="primary" />}
                     label={
-                      <Grid container justify="center" alignItems="center">
+                      <Grid container justify="flex-start" alignItems="center">
                         <Grid item>
                           <Paper elevation={3} className={classes.paper}>
                             <h4>
@@ -150,11 +160,12 @@ const SelectAddress = ({
       </Grid>
       <AddEditAddressModal
         title={isEditMode ? 'Edit Address' : 'Add Address'}
-        data={addresses.find(({ id }) => id === addressUnderModification)}
+        data={isEditMode ? addresses.find(({ id }) => id === addressUnderModification) : {}}
         open={isAddressModalOpen}
         onCancel={onCancelClick}
         onSave={onAddressSaveClick}
         saveBtnText={isEditMode ? 'Save Changes' : 'Add Address'}
+        addressCount={addresses.length}
       />
     </Grid>
   );
@@ -164,6 +175,9 @@ const mapStateToProps = state => ({
   addresses: state.address,
 });
 
-export default connect(mapStateToProps, { addAddress, updateAddress, deleteAddress })(
-  SelectAddress
-);
+export default connect(mapStateToProps, {
+  addAddress,
+  updateAddress,
+  deleteAddress,
+  setDefaultAddress,
+})(SelectAddress);

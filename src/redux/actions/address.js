@@ -12,3 +12,7 @@ export const updateAddress = payload => dispatch => {
 export const deleteAddress = id => dispatch => {
   dispatch({ type: actionTypes.DELETE_ADDRESS, id });
 };
+
+export const setDefaultAddress = id => dispatch => {
+  dispatch({ type: actionTypes.SET_DEFAULT_ADDRESS, id });
+};

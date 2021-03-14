@@ -8,7 +8,8 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import { Container, Grid, TextField } from '@material-ui/core';
+import { Checkbox, Container, FormControlLabel, Grid, TextField } from '@material-ui/core';
+import isEmpty from 'lodash/isEmpty';
 
 const styles = theme => ({
   root: {
@@ -62,28 +63,53 @@ const initialState = {
   pin: '',
   address: '',
   mobile: '',
+  isDefault: true,
 };
 
-const AddEditAddressModal = ({ open, onSave, onCancel, title, saveBtnText, data }) => {
+const AddEditAddressModal = ({
+  open,
+  onSave,
+  onCancel,
+  title,
+  saveBtnText,
+  data,
+  addressCount,
+}) => {
   const [addressData, setAddressData] = useState(initialState);
 
   useEffect(() => {
-    if (data) setAddressData(data);
+    if (!isEmpty(data)) setAddressData(data);
   }, [data]);
 
   const onInputChange = event => {
     setAddressData({ ...addressData, [event.target.name]: event.target.value });
   };
 
+  const onDefaultChange = event => {
+    setAddressData({ ...addressData, [event.target.name]: event.target.checked });
+  };
+
+  const isDefaultChanged = () => {
+    if (!isEmpty(data)) {
+      return data.isDefault !== addressData.isDefault;
+    }
+    return addressData.isDefault;
+  };
+
   const onDataSave = () => {
-    onSave(addressData);
+    onSave(addressData, isDefaultChanged());
     setAddressData({ ...initialState, id: getUniqueId() });
   };
 
-  const { firstName, lastName, email, state, city, pin, address, mobile } = addressData;
+  const onCancelClick = () => {
+    setAddressData({ ...initialState, id: getUniqueId() });
+    onCancel();
+  };
+
+  const { firstName, lastName, email, state, city, pin, address, mobile, isDefault } = addressData;
   return (
     <div>
-      <Dialog onClose={onCancel} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog onClose={onCancelClick} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={onCancel}>
           {title}
         </DialogTitle>
@@ -194,6 +220,28 @@ const AddEditAddressModal = ({ open, onSave, onCancel, title, saveBtnText, data 
                   </Grid>
                 </Grid>
               </Grid>
+              {addressCount ? (
+                <Grid item>
+                  <Grid container spacing={2}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isDefault}
+                          onChange={onDefaultChange}
+                          value={isDefault}
+                          name="isDefault"
+                          color="primary"
+                        />
+                      }
+                      label="Mark as default"
+                      disabled={!addressCount}
+                    />
+                  </Grid>
+                  <Grid item />
+                </Grid>
+              ) : (
+                <></>
+              )}
             </Grid>
           </Container>
         </DialogContent>

@@ -17,7 +17,13 @@ const address = (state = initialState, action) => {
       const newState = state.filter(({ id }) => id !== action.id);
       return newState;
     }
-
+    case actionTypes.SET_DEFAULT_ADDRESS: {
+      const newState = state.map(addressData => {
+        if (addressData.id === action.id) return { ...addressData, isDefault: true };
+        return { ...addressData, isDefault: false };
+      });
+      return newState;
+    }
     default:
       return state;
   }
