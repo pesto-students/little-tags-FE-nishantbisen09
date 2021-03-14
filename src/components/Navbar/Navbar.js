@@ -19,7 +19,7 @@ import LoginModal from '../Auth/LoginModal';
 function Navbar() {
   const classes = useStyles();
   const history = useHistory();
-  const totalCartItems = useSelector(state => state.cartReducer.length);
+  const totalCartItems = useSelector(state => state.cart.length);
 
   return (
     <div className={classes.grow}>

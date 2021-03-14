@@ -77,7 +77,7 @@ function LoginModal({ loginModalState, loginModalClose }) {
 }
 
 const mapStateToProps = state => ({
-  loginModalState: state.loginModalReducer,
+  loginModalState: state.loginModal,
 });
 
 const mapDispatchToProps = {

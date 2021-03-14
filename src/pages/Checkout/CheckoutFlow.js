@@ -7,7 +7,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import SelectAddress from '../../components/SelectAddress/SelectAddress';
 import SingleProductCard from '../../components/Cart/SingleProductCard';
 import EmptyCart from '../../components/Cart/EmptyCart';
@@ -36,6 +36,7 @@ const steps = ['Shopping Cart', 'Select Delivery Address', 'Select Payment Metho
 function CheckoutFlow({ cart }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const addressesCount = useSelector(state => state.address.length);
 
   function getStepContent(step) {
     switch (step) {
@@ -90,7 +91,7 @@ function CheckoutFlow({ cart }) {
 
                 {steps[activeStep + 1] ? (
                   <Button
-                    disabled={!cart.length}
+                    disabled={!cart.length || (!addressesCount && activeStep === 1)}
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
@@ -117,7 +118,7 @@ function CheckoutFlow({ cart }) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cartReducer,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, null)(CheckoutFlow);

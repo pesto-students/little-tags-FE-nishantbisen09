@@ -32,6 +32,7 @@ const Products = ({ products, heading, position, className, spacing }) => {
                 name={title}
                 ratingCount={ratingCount}
                 onClick={onProductCardClick}
+                showAddToCartButton
               />
             </Grid>
           );
