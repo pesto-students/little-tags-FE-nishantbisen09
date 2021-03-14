@@ -8,8 +8,8 @@ module.exports = {
   },
   extends: ['airbnb', 'plugin:prettier/recommended'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'warn',
+    'no-debugger': 'warn',
     'no-unused-vars': 'warn',
     'react/prop-types': [0],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
