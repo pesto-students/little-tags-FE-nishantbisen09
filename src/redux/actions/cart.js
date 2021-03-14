@@ -9,3 +9,7 @@ export const updateProductQuantity = (productToUpdate, newQuantity) => dispatch 
 
 export const removeProductFromCart = productToRemove => dispatch =>
   dispatch({ type: actionTypes.REMOVE_ITEM_FROM_CART, productToRemove });
+
+export const clearCart = () => dispatch => {
+  dispatch({ type: actionTypes.CLEAR_CART });
+};

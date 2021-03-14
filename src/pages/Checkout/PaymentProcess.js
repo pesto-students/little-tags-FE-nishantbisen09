@@ -10,6 +10,8 @@ import { useHistory } from 'react-router-dom';
 import payWithRazorPay from '../../utilities/payWithRazorPay';
 import { useGoogleAuth } from '../../components/Auth/GoogleAuthProvider';
 import { openLoginModal } from '../../redux/actions/loginModal';
+import { addProductsToOrderHistory } from '../../redux/actions/orderHistoryActions';
+import { clearCart } from '../../redux/actions/cart';
 
 const useStyles = makeStyles(theme => ({
   paymentButton: {
@@ -17,20 +19,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function PaymentProcess({ cart, loginModalOpen }) {
+function PaymentProcess({ cart, loginModalOpen, addOrders, emptyCart }) {
   const classes = useStyles();
   const { googleUser, isSignedIn } = useGoogleAuth();
   const history = useHistory();
 
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const onPaymentCompletion = response => {
-    console.log(response);
-    // TODO:
-    // Add cart items to orders(redux)
-    // Clear cart
-    // Redirect to orders page
+  const onPaymentCompletion = () => {
+    addOrders(cart);
+    emptyCart();
+
     setIsProcessing(false);
+
     history.push('/orders');
   };
 
@@ -74,6 +75,8 @@ function PaymentProcess({ cart, loginModalOpen }) {
 
 const mapDispatchToProps = {
   loginModalOpen: openLoginModal,
+  addOrders: addProductsToOrderHistory,
+  emptyCart: clearCart,
 };
 
 const mapStateToProps = state => ({
