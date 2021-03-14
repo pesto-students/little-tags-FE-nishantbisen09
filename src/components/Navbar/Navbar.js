@@ -45,7 +45,7 @@ function Navbar() {
           <IconButton
             aria-label={`${totalCartItems} item(s) in your cart`}
             color="inherit"
-            onClick={() => history.push('/cart')}
+            onClick={() => history.push('/checkout')}
           >
             <Badge badgeContent={totalCartItems} color="primary">
               <ShoppingCart />
