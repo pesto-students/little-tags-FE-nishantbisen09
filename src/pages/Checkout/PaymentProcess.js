@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import payWithRazorPay from '../../utilities/payWithRazorPay';
 import { useGoogleAuth } from '../../components/Auth/GoogleAuthProvider';
 import { openLoginModal } from '../../redux/actions/loginModal';
+import { addProductsToOrderHistory } from '../../redux/actions/orderHistoryActions';
 
 const useStyles = makeStyles(theme => ({
   paymentButton: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function PaymentProcess({ cart, loginModalOpen }) {
+function PaymentProcess({ cart, loginModalOpen, addOrders }) {
   const classes = useStyles();
   const { googleUser, isSignedIn } = useGoogleAuth();
   const history = useHistory();
@@ -25,13 +26,15 @@ function PaymentProcess({ cart, loginModalOpen }) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const onPaymentCompletion = response => {
-    console.log(response);
+    console.log(response, 'response');
     // TODO:
     // Add cart items to orders(redux)
+    addOrders(cart);
     // Clear cart
-    // Redirect to orders page
+    // emptyCart();
     setIsProcessing(false);
-    history.push('/orders');
+    // Redirect to orders page
+    // history.push('/orders');
   };
 
   const onRazorpayModalClose = () => {
@@ -39,12 +42,14 @@ function PaymentProcess({ cart, loginModalOpen }) {
   };
 
   const startPaymentProcess = () => {
-    if (!isSignedIn) {
-      loginModalOpen();
-      return;
-    }
-    setIsProcessing(true);
-    payWithRazorPay(cart, googleUser, onPaymentCompletion, onRazorpayModalClose);
+    onPaymentCompletion();
+    //! UNTIL TESTING IS dONE - BELOW CODE IS IMPORTANT
+    // if (!isSignedIn) {
+    //   loginModalOpen();
+    //   return;
+    // }
+    // setIsProcessing(true);
+    // payWithRazorPay(cart, googleUser, onPaymentCompletion, onRazorpayModalClose);
   };
 
   return (
@@ -74,6 +79,7 @@ function PaymentProcess({ cart, loginModalOpen }) {
 
 const mapDispatchToProps = {
   loginModalOpen: openLoginModal,
+  addOrders: addProductsToOrderHistory,
 };
 
 const mapStateToProps = state => ({
