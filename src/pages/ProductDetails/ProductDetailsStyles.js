@@ -79,6 +79,7 @@ export default makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       justifyContent: 'center',
+      flexDirection: 'column',
     },
   },
 }));

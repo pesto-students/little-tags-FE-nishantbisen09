@@ -66,8 +66,8 @@ function SingleOrderCard({ order }) {
   const classes = useStyles();
 
   // eslint-disable-next-line no-unused-vars
-  const rateAndReview = currentOrder => {
-    console.info(currentOrder, 'currentOrder'); // eslint-disable-line no-console
+  const rateAndReview = () => {
+    // console.info(currentOrder, 'currentOrder');
   };
 
   return (
