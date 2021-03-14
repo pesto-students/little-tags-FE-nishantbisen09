@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import SearchResults from './pages/SearchResults/SearchResults';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
-import Checkout from './pages/Checkout/Checkout';
+import CheckoutPage from './pages/Checkout/CheckoutPage';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/search" component={SearchResults} />
           <Route path="/product-detail/:id" component={ProductDetails} />
-          <Route path="/checkout" component={Checkout} />
+          <Route path="/checkout" component={CheckoutPage} />
         </Switch>
         <Footer />
       </BrowserRouter>

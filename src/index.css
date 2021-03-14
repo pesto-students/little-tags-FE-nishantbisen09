@@ -6,6 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   color: #2d3748;
+  background-color: #f1f2f3;
 }
 
 * {
@@ -107,4 +108,12 @@ body {
   display: flex !important;
   justify-content: center;
   padding: 20px 0;
+}
+
+.lightGreen {
+  color: rgb(0, 160, 8);
+}
+
+.bold {
+  font-weight: 700;
 }
