@@ -143,7 +143,7 @@ function SearchResults() {
       </div>
 
       <h2 className={classes.heading}>
-        {searchResults.length ? (
+        {searchResults.length && params.get('q') ? (
           <>
             <FormattedMessage id="searchResultsFor" />{' '}
             <span>&quot;{searchOptions.queryString}&quot;</span>
