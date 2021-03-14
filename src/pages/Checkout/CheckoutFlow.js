@@ -5,12 +5,12 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import { Divider } from '@material-ui/core';
 import { connect, useSelector } from 'react-redux';
 import SelectAddress from '../../components/SelectAddress/SelectAddress';
 import SingleProductCard from '../../components/Cart/SingleProductCard';
 import EmptyCart from '../../components/Cart/EmptyCart';
+import PaymentProcess from './PaymentProcess';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,10 +20,14 @@ const useStyles = makeStyles(theme => ({
     background: '#0000',
   },
   button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(2),
   },
   actionsContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  actionDivider: {
+    marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
   },
   resetContainer: {
@@ -53,7 +57,8 @@ function CheckoutFlow({ cart }) {
       case 1:
         return <SelectAddress />;
       case 2:
-        return `Payment method`;
+        return <PaymentProcess />;
+
       default:
         return 'Unknown step';
     }
@@ -66,9 +71,6 @@ function CheckoutFlow({ cart }) {
     setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
   return (
     <>
       <Stepper className={classes.root} activeStep={activeStep} orientation="vertical">
@@ -77,42 +79,35 @@ function CheckoutFlow({ cart }) {
             <StepLabel>{label}</StepLabel>
             <StepContent>
               {getStepContent(index)}
-
+              <Divider className={classes.actionDivider} />
               <div className={classes.actionsContainer}>
+                {steps[activeStep + 1] ? (
+                  <Button
+                    disabled={!cart.length || (!addressesCount && activeStep === 1)}
+                    variant="contained"
+                    size="large"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    Continue
+                  </Button>
+                ) : null}
                 <Button
                   variant="outlined"
                   color="primary"
+                  size="large"
                   disabled={activeStep === 0}
                   onClick={handleBack}
                   className={classes.button}
                 >
                   Back
                 </Button>
-
-                {steps[activeStep + 1] ? (
-                  <Button
-                    disabled={!cart.length || (!addressesCount && activeStep === 1)}
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {steps[activeStep + 1] || 'Finish'}
-                  </Button>
-                ) : null}
               </div>
             </StepContent>
           </Step>
         ))}
       </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
-            Reset
-          </Button>
-        </Paper>
-      )}
     </>
   );
 }
