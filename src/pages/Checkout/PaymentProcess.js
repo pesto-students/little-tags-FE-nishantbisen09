@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import payWithRazorPay from '../../utilities/payWithRazorPay';
 import { useGoogleAuth } from '../../components/Auth/GoogleAuthProvider';
+import { openLoginModal } from '../../redux/actions/loginModal';
 
 const useStyles = makeStyles(theme => ({
   paymentButton: {
@@ -16,9 +17,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function PaymentProcess({ cart }) {
+function PaymentProcess({ cart, loginModalOpen }) {
   const classes = useStyles();
-  const { googleUser } = useGoogleAuth();
+  const { googleUser, isSignedIn } = useGoogleAuth();
   const history = useHistory();
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -38,6 +39,10 @@ function PaymentProcess({ cart }) {
   };
 
   const startPaymentProcess = () => {
+    if (!isSignedIn) {
+      loginModalOpen();
+      return;
+    }
     setIsProcessing(true);
     payWithRazorPay(cart, googleUser, onPaymentCompletion, onRazorpayModalClose);
   };
@@ -67,8 +72,12 @@ function PaymentProcess({ cart }) {
   );
 }
 
+const mapDispatchToProps = {
+  loginModalOpen: openLoginModal,
+};
+
 const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps, null)(PaymentProcess);
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentProcess);
