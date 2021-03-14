@@ -3,6 +3,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useHistory } from 'react-router-dom';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {
   Divider,
@@ -29,6 +30,7 @@ function Sidebar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const ITEM_HEIGHT = 48;
+  const history = useHistory();
 
   const onDotMenuClick = event => {
     setAnchorEl(event.currentTarget);
@@ -42,6 +44,11 @@ function Sidebar() {
     onDotMenuCLose();
   };
 
+  const onCategoryClick = url => {
+    history.push(url);
+    toggleSideBar(false);
+  };
+
   const menu = () => (
     <div className={classes.list}>
       <div className={classes.sidebarLogoContainer}>
@@ -50,13 +57,16 @@ function Sidebar() {
       <Divider />
       <h2 className={classes.menuHeader}>Categories</h2>
       <List>
-        {topCategories.map(({ id, name, image }) => (
-          <>
-            <ListItem button key={id} className={classes.listItemStyle}>
-              <div style={{ backgroundImage: `url(${image})` }} className={classes.categoryImage} />
-              <ListItemText primary={name} />
-            </ListItem>
-          </>
+        {topCategories.map(({ id, name, image, url }) => (
+          <ListItem
+            button
+            key={id}
+            className={classes.listItemStyle}
+            onClick={() => onCategoryClick(url)}
+          >
+            <div style={{ backgroundImage: `url(${image})` }} className={classes.categoryImage} />
+            <ListItemText primary={name} />
+          </ListItem>
         ))}
       </List>
       <Hidden smUp>

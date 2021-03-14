@@ -24,12 +24,12 @@ const Categories = ({ categories }) => {
         <FormattedMessage id="topCategories" />
       </h3>
       <Grid container className={classes.root} justify="center" spacing={6}>
-        {categories.map(category => {
+        {categories.map(({ name, image, url, id }) => {
           return (
-            <Grid key={category.name} item lg>
+            <Grid key={id} item lg>
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-              <div onClick={() => history.push(`/search?q=${category.name}&c=${category.name}`)}>
-                <CategoryCard category={category} />
+              <div onClick={() => history.push(url)}>
+                <CategoryCard name={name} image={image} />
               </div>
             </Grid>
           );
