@@ -48,7 +48,9 @@ function CheckoutFlow({ cart }) {
         return (
           <>
             {cart.length ? (
-              cart.map(product => <SingleProductCard product={product} />)
+              cart.map(product => (
+                <SingleProductCard key={`${product.id}-${product.currentSize}`} product={product} />
+              ))
             ) : (
               <EmptyCart />
             )}

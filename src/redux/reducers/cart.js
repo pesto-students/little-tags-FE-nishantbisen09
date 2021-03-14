@@ -37,6 +37,10 @@ const cart = (state = initialState, action) => {
       return updatedCart;
     }
 
+    case actionTypes.CLEAR_CART: {
+      return [];
+    }
+
     default:
       return state;
   }
