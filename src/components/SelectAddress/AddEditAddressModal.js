@@ -116,133 +116,131 @@ const AddEditAddressModal = ({
         <DialogContent dividers>
           <Container>
             <Grid container justify="center" spacing={2}>
-              <Grid item>
-                <Grid container spacing={2}>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="First Name"
-                      name="firstName"
-                      variant="outlined"
-                      value={firstName}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="Last Name"
-                      name="lastName"
-                      variant="outlined"
-                      value={lastName}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                </Grid>
+              <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="First Name"
+                  name="firstName"
+                  variant="outlined"
+                  value={firstName}
+                  onChange={onInputChange}
+                />
               </Grid>
-              <Grid item>
-                <Grid container spacing={2}>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="Email"
-                      name="email"
-                      variant="outlined"
-                      value={email}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="Phone"
-                      name="mobile"
-                      variant="outlined"
-                      value={mobile}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                </Grid>
+              <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="Last Name"
+                  name="lastName"
+                  variant="outlined"
+                  value={lastName}
+                  onChange={onInputChange}
+                />
               </Grid>
-              <Grid item>
-                <Grid container spacing={2}>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="Address"
-                      name="address"
-                      variant="outlined"
-                      value={address}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="State"
-                      name="state"
-                      variant="outlined"
-                      value={state}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item>
-                <Grid container spacing={2}>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="City"
-                      name="city"
-                      variant="outlined"
-                      value={city}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                  <Grid item md={6}>
-                    <TextField
-                      error={false}
-                      required
-                      label="Pin Code"
-                      name="pin"
-                      variant="outlined"
-                      value={pin}
-                      onChange={onInputChange}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              {addressCount ? (
-                <Grid item>
-                  <Grid container spacing={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={isDefault}
-                          onChange={onDefaultChange}
-                          value={isDefault}
-                          name="isDefault"
-                          color="primary"
-                        />
-                      }
-                      label="Mark as default"
-                      disabled={!addressCount}
-                    />
-                  </Grid>
-                  <Grid item />
-                </Grid>
-              ) : (
-                <></>
-              )}
             </Grid>
+
+            <Grid container justify="center" spacing={2}>
+              {/* <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="Email"
+                  name="email"
+                  variant="outlined"
+                  value={email}
+                  onChange={onInputChange}
+                />
+              </Grid> */}
+              <Grid item md={12}>
+                <TextField
+                  error={false}
+                  required
+                  label="Address"
+                  name="address"
+                  variant="outlined"
+                  value={address}
+                  onChange={onInputChange}
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container justify="center" spacing={2}>
+              <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="Phone"
+                  name="mobile"
+                  variant="outlined"
+                  value={mobile}
+                  onChange={onInputChange}
+                />
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="State"
+                  name="state"
+                  variant="outlined"
+                  value={state}
+                  onChange={onInputChange}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container justify="center" spacing={2}>
+              <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="City"
+                  name="city"
+                  variant="outlined"
+                  value={city}
+                  onChange={onInputChange}
+                />
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  error={false}
+                  required
+                  label="Pin Code"
+                  name="pin"
+                  variant="outlined"
+                  value={pin}
+                  onChange={onInputChange}
+                />
+              </Grid>
+            </Grid>
+
+            {addressCount ? (
+              <Grid container spacing={2}>
+                <Grid item>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={isDefault}
+                        onChange={onDefaultChange}
+                        value={isDefault}
+                        name="isDefault"
+                        color="primary"
+                      />
+                    }
+                    label="Mark as default"
+                    disabled={!addressCount}
+                  />
+                </Grid>
+              </Grid>
+            ) : (
+              <></>
+            )}
           </Container>
         </DialogContent>
         <DialogActions>
