@@ -60,7 +60,7 @@ const sliderSettings = {
       breakpoint: 480,
       settings: {
         arrows: false,
-        slidesToShow: 1.3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         dots: false,
       },
