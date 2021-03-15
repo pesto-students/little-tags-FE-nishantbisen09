@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import findIndex from 'lodash/findIndex';
 import { useHistory } from 'react-router-dom';
+import FlashOnIcon from '@material-ui/icons/FlashOn';
 import SimilarProducts from '../../components/SimilarProducts/SimilarProducts';
 import SizeContainer from '../../components/SizeContainer/SizeContainer';
 import products from '../../data/products';
@@ -132,6 +133,7 @@ const ProductDetails = props => {
                       color="primary"
                       className={classes.actionBtn}
                       onClick={handleBuy}
+                      startIcon={<FlashOnIcon />}
                     >
                       <FormattedMessage id="buyNow" />
                     </Button>
