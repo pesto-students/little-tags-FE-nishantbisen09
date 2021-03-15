@@ -47,11 +47,12 @@ function BillSummary({ cart }) {
 
   useEffect(() => {
     invoiceSubtotal = subtotal(cart);
-    const tax = (invoiceSubtotal + shippingCost) * TAX_RATE;
-    const total = invoiceSubtotal + shippingCost + tax;
+    const shipping = invoiceSubtotal ? shippingCost : 0;
+    const tax = (invoiceSubtotal + shipping) * TAX_RATE;
+    const total = invoiceSubtotal + shipping + tax;
     setSummary({
       ...summary,
-      shipping: shippingCost,
+      shipping,
       subtotal: invoiceSubtotal,
       tax,
       total,
@@ -75,7 +76,7 @@ function BillSummary({ cart }) {
               Shipping
             </TableCell>
             <TableCell className={classes.cell} align="right">
-              {shippingCost}
+              {summary.shipping}
               {` ${CURRENCY}`}
             </TableCell>
           </TableRow>
