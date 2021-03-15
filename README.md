@@ -16,4 +16,4 @@ Open <http://localhost:3000> on your browser
 
 
 ## Project Link
-https://little-tags-app.netlify.app/
+https://little-tags-fe-nishantbisen09.vercel.app/
