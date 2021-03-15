@@ -6,12 +6,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import payWithRazorPay from '../../utilities/payWithRazorPay';
 import { useGoogleAuth } from '../../components/Auth/GoogleAuthProvider';
 import { openLoginModal } from '../../redux/actions/loginModal';
 import { addProductsToOrderHistory } from '../../redux/actions/orderHistoryActions';
 import { clearCart } from '../../redux/actions/cart';
+import SuccessModal from './SuccessModal';
 
 const useStyles = makeStyles(theme => ({
   paymentButton: {
@@ -22,17 +22,15 @@ const useStyles = makeStyles(theme => ({
 function PaymentProcess({ cart, loginModalOpen, addOrders, emptyCart }) {
   const classes = useStyles();
   const { googleUser, isSignedIn } = useGoogleAuth();
-  const history = useHistory();
 
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const onPaymentCompletion = () => {
     addOrders(cart);
     emptyCart();
 
-    setIsProcessing(false);
-
-    history.push('/orders');
+    setIsSuccessModalOpen(true);
   };
 
   const onRazorpayModalClose = () => {
@@ -69,6 +67,10 @@ function PaymentProcess({ cart, loginModalOpen, addOrders, emptyCart }) {
       >
         {isProcessing ? 'Please wait..' : 'Proceed to Pay'}
       </Button>
+      <SuccessModal
+        isSuccessModalOpen={isSuccessModalOpen}
+        setIsSuccessModalOpen={setIsSuccessModalOpen}
+      />
     </div>
   );
 }
