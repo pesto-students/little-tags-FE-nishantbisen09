@@ -76,6 +76,7 @@ const ProductDetails = props => {
     addItemToCart();
 
     if (isSignedIn) {
+      // Move to checkout
       history.push('/checkout');
     }
   };
