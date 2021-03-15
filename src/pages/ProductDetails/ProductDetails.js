@@ -73,8 +73,9 @@ const ProductDetails = props => {
 
   const handleBuy = () => {
     addItemToCart();
+
     if (isSignedIn) {
-      history.push('/cart');
+      history.push('/checkout');
     }
   };
 
