@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#1B1642',
@@ -11,6 +11,9 @@ const useStyle = makeStyles(() => ({
     bottom: 0,
     width: '100%',
     position: 'fixed',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '11px',
+    },
   },
   footer: {
     padding: '15px',
