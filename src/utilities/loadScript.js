@@ -3,7 +3,7 @@ export default function loadScript(src) {
     // const script = document.createElement('script');
     // script.src = src;
     // script.onload = () => {
-    //   resolve(true);
+    resolve(src);
     // };
     // script.onerror = () => {
     //   resolve(false);
