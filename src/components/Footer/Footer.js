@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyle = makeStyles(() => ({
   root: {
@@ -15,6 +16,9 @@ const useStyle = makeStyles(() => ({
   footer: {
     padding: '15px',
   },
+  owners: {
+    color: 'white',
+  },
 }));
 
 const Footer = () => {
@@ -23,7 +27,24 @@ const Footer = () => {
   return (
     <Grid className={classes.root} container justify="space-between" alignItems="center">
       <Grid item className={classes.footer}>
-        &copy; {new Date().getFullYear()}, Femgame
+        Made with ❤ by{' '}
+        <a
+          href="https://github.com/CodingCreate101"
+          className={classes.owners}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Tejas
+        </a>{' '}
+        and{' '}
+        <a
+          href="https://github.com/nishantbisen09"
+          className={classes.owners}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Nishant
+        </a>
       </Grid>
       <Grid item className={classes.footer}>
         All Rights Reserved
