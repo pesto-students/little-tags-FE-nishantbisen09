@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
@@ -49,10 +51,19 @@ function Sidebar() {
     toggleSideBar(false);
   };
 
+  const onLogoClick = () => {
+    toggleSideBar(false);
+    history.push('/');
+  };
+
   const menu = () => (
     <div className={classes.list}>
       <div className={classes.sidebarLogoContainer}>
-        <div className={classes.sidebarLogo} style={{ backgroundImage: `url(${logo})` }} />
+        <div
+          className={classes.sidebarLogo}
+          style={{ backgroundImage: `url(${logo})` }}
+          onClick={onLogoClick}
+        />
       </div>
       <Divider />
       <h2 className={classes.menuHeader}>Categories</h2>
